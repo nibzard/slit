@@ -5,7 +5,7 @@ The user selected Grip: a dark frame, a large shutter on the lower right, and an
 
 **Status: project bootstrap, not a working camera.**
 The SwiftUI shell and shared state rules are present. Native capture, storage, review, and device testing remain to implement.
-Verified 2026-10-30 on macOS: project generation with XcodeGen 2.46.0, an unsigned simulator build with Xcode 27.2 (Swift 6.4.2, iOS 27.2 SDK), the 62 core tests, and both shell UI tests on an iPhone 18 Pro simulator with iOS 27.0 all pass.
+Verified 2026-10-30 on macOS: project generation with XcodeGen 2.46.0, an unsigned simulator build with Xcode 27.2 (Swift 6.4.2, iOS 27.2 SDK), all 79 core tests, and both shell UI tests on an iPhone 18 Pro simulator with iOS 27.0 all pass.
 Simulator results do not prove camera capture, focus, or timing; no physical-device test has run.
 
 ## Start here

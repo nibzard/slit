@@ -39,15 +39,15 @@ There is no app icon or distribution asset set. Add those before internal distri
 | Portable repository checks | Passed; see [the bootstrap report](reports/bootstrap-verification.md) and [the T005 local checks](reports/2026-10-30-t005/local-checks.md) |
 | Python syntax and shell syntax | Run during handoff preparation |
 | Configuration YAML and privacy plist parsing | Run during handoff preparation |
-| Swift compilation and core tests | Passed on this host with Swift 6.4.2 on Linux: 17 XCTest and 62 swift-testing tests, 0 failures; see [T007](reports/2026-10-30-t007/local-checks.md) and [T015](reports/2026-10-30-t015/local-checks.md). The macOS run in T003 is still required |
-| Xcode project generation and simulator build | Not run: macOS, Xcode, and XcodeGen are absent |
-| UI tests | Written, not run |
+| Swift compilation and core tests | Passed on this host with Swift 6.4.2 on Linux: 17 XCTest and 62 swift-testing tests, 0 failures; see [T007](reports/2026-10-30-t007/local-checks.md) and [T015](reports/2026-10-30-t015/local-checks.md). Passed 2026-10-30 on macOS with Xcode 27.2 (Swift 6.4.2), same 79 tests, 0 failures; see [T003](reports/2026-10-30-t003/local-checks.md) |
+| Xcode project generation and simulator build | Passed 2026-10-30: XcodeGen 2.46.0 generated the project and Xcode 27.2 built the app for the simulator unsigned; see [T003](reports/2026-10-30-t003/local-checks.md) |
+| UI tests | Passed 2026-10-30: both shell tests on an iPhone 18 Pro simulator with iOS 27.0 after two iOS 27 query fixes; see [T003](reports/2026-10-30-t003/local-checks.md) |
 | Continuous integration workflow | Configured, not run remotely |
 | Physical-device acceptance M01–M24 | Not run |
 
-The first receiving developer must run the macOS build and tests before accepting the scaffold as a build baseline.
-Fix any compile or generation issues in WP-00 and record the actual toolchain.
-Do not treat static file checks as proof that the application builds.
+The macOS build baseline was accepted on October 30, 2026; see [T003](reports/2026-10-30-t003/local-checks.md).
+Signing and the physical iPhone 16 Plus remain required before device acceptance.
+Do not treat static file checks or a simulator build as proof that the application builds for the device.
 
 ## Remaining team inputs
 

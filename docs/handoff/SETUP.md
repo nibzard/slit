@@ -12,7 +12,7 @@ Record the exact installed versions in the [capability report](templates/capabil
 
 1. Select the full Xcode installation with `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer` if needed.
 2. Open Xcode, complete its first-launch setup, and install an iOS simulator runtime.
-3. Install XcodeGen with `brew install xcodegen` if it is absent.
+3. Install XcodeGen from the official GitHub release if it is absent. Use the version recorded in `.xcodegen-version`; continuous integration installs the same version automatically.
 4. Run `make bootstrap` from the project root.
 5. Run `make verify` to check portable files, test core rules, build, and test the app in order.
 6. Open `Slit.xcodeproj`, select Slit, and run the development shell.
@@ -61,7 +61,7 @@ Edit permission strings, targets, scheme definitions, and supported orientations
 | --- | --- |
 | `xcodebuild` cannot find Xcode | Select the full Xcode installation; Command Line Tools alone are insufficient |
 | No simulator is installed | Install an iOS runtime in Xcode Settings; then list available devices |
-| XcodeGen version is too old | Upgrade it or install the official 2.46.0 release; record the selected version |
+| XcodeGen version is too old | Upgrade it or install the release pinned in `.xcodegen-version`; record the selected version |
 | Device signing fails | Check the local identifier, team, device registration, and selected account |
 | Camera is unavailable in the shell | Expected: implement WP-01 and WP-02; the scaffold does not open a camera |
 | Tests are missing from the app scheme | Core tests are a separate Swift package; run `make test-core` |

@@ -8,7 +8,7 @@ This document assigns implementation ownership without creating more runtime mod
 | Owner | Location | Responsibilities |
 | --- | --- | --- |
 | App and interface | `App/Sources` | Grip, navigation, accessibility, view state, and platform view bridges |
-| Capture | Add `App/Sources/Camera` | One serial session owner, configuration, readiness, focus, input, and delegate lifetime |
+| Capture | `App/Sources/Camera`; debug capability probe prepared | One serial session owner, configuration, readiness, focus, input, and delegate lifetime |
 | Persistence | Add `App/Sources/Storage` | Order allocation, staging, metadata, atomic commit, recovery, and index |
 | Review | Add `App/Sources/Review` | Preview work, image navigation, detail, and original sharing |
 | Diagnostics | Add `App/Sources/Diagnostics` | Bounded phase records, report export, and performance instrumentation |

@@ -21,3 +21,14 @@ __pycache__/
 *.mobileprovision
 # Private capability-probe exports. Do not commit test photographs.
 capability-probe-output/
+# Local agent runtime state, not project content.
+**/.claude/scheduled_tasks.lock
+**/.claude/scheduled_tasks.json
+**/.claude/routines/.state/
+**/.claude/worktrees/
+**/.claude/checkpoints/
+**/.claude/mailbox/
+**/.claude/agent-registry.json
+**/.claude/agent-memory-local
+**/.claude/first-run
+**/.claude/assistant-daemon-state.json

@@ -9,14 +9,14 @@ M01–M24 refer to the [native acceptance checklist](../specs/0002-first-native-
 | ID | Suggested owner | Depends on | Deliverable | Acceptance coverage | Status |
 | --- | --- | --- | --- | --- | --- |
 | WP-00 | Integration lead | None | Generate project, compile shell, run core and UI tests, record toolchain and signing setup | Foundation for all checks | Ready; source scaffold exists, macOS verification pending |
-| WP-01 | Camera lead + storage lead | WP-00 | Physical capability probe, first DNG, neutral decode, frozen configuration and service contracts | M02, M11; baseline for M22 | Ready after WP-00 |
+| WP-01 | Camera lead + storage lead | WP-00 | Physical capability probe, first DNG, neutral decode, frozen configuration and service contracts | M02, M11; baseline for M22 | Probe source and service contracts prepared; device verification pending |
 | WP-02 | Camera engineer | WP-01 | Live preview, permission flow, lifecycle, readiness, one-shot onscreen and hardware capture | M01, M04, M05, M19 | Not started |
 | WP-03 | Interface engineer | WP-00; final geometry needs WP-01 | Native Grip, landscape layouts, grid, stable feedback, accessible controls | M03, M10, M21 | Shell exists; native behavior not implemented |
-| WP-04 | Persistence engineer | WP-01 | Metadata codec, durable order reservation, commit, index, recovery, save retry and discard | M11, M12, M13, M14, M15 | Not started |
+| WP-04 | Persistence engineer | WP-01 | Metadata codec, durable order reservation, commit, index, recovery, save retry and discard | M11, M12, M13, M14, M15 | Metadata codec and order reservation prepared in SlitCore with tests; commit, index, recovery, retry, and discard not started |
 | WP-05 | Camera engineer | WP-02 | Tap focus, long-press lock, stale-operation protection, compensation and restoration | M06, M07, M08, M09 | Logical token helper exists; hardware work not started |
 | WP-06 | Review engineer | WP-03, WP-04; decoder verified in WP-01 | Previews, ordered review, detail, return, original sharing | M16, M17, M18 | Not started |
 | WP-07 | Integration lead | WP-02, WP-03, WP-04, WP-05, WP-06 | Complete capture-to-commit-to-review flow, late callbacks, capacity and error recovery | M04, M05, M08, M12, M13, M15, M17, M19, M20 | Not started |
-| WP-08 | Quality/performance engineer | Instrumentation can start at WP-01; full runs need WP-07 | Fault injection, local diagnostics, memory/thermal behavior, frozen gates and measured results | M20, M22, M23, M24 | Not started |
+| WP-08 | Quality/performance engineer | Instrumentation can start at WP-01; full runs need WP-07 | Fault injection, local diagnostics, memory/thermal behavior, frozen gates and measured results | M20, M22, M23, M24 | Diagnostics event model, rotation policy, and report tooling prepared; device instrumentation and gate freezes not started |
 | WP-09 | Release owner + product owner | WP-07, WP-08 | All acceptance evidence, field walk, installable internal build, limitations and handback | M01–M24 | Not started |
 
 ## WP-00: establish a build baseline

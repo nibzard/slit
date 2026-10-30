@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Copy selected /notes research and make project documentation links portable."""
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 import argparse
 import os
 import re
@@ -28,6 +28,27 @@ missing = [name for name in names if not (source / name).exists()]
 if missing:
     raise SystemExit('Missing research sources: ' + ', '.join(missing))
 destination.mkdir(parents=True, exist_ok=True)
+# --only skips the references tree. Failing is simpler than copying it unasked:
+# a partial export must not leave links that resolve to nothing.
+# The check passes when an earlier full export already committed the tree.
+# It runs before any copy so a failure leaves the destination unchanged.
+if args.only:
+    unresolved = []
+    for name in names:
+        for target in re.findall(r'\]\((<[^>]+>|[^)\s]+)\)', (source / name).read_text()):
+            raw = unquote(target.strip('<>')).split('#')[0]
+            if raw.startswith('/notes/references/'):
+                resolved = destination / raw.removeprefix('/notes/')
+            elif raw.startswith('references/'):
+                resolved = destination / raw
+            else:
+                continue
+            if not resolved.exists():
+                unresolved.append(f'{name}: {raw}')
+    if unresolved:
+        raise SystemExit('--only does not copy the references tree, and these links need it:\n  ' +
+                         '\n  '.join(unresolved) +
+                         '\nRun the export without --only so references/ is copied too.')
 for name in names:
     shutil.copy2(source / name, destination / name)
 if not args.only:

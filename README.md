@@ -5,7 +5,8 @@ The user selected Grip: a dark frame, a large shutter on the lower right, and an
 
 **Status: project bootstrap, not a working camera.**
 The SwiftUI shell and shared state rules are present. Native capture, storage, review, and device testing remain to implement.
-No Swift or Xcode build has run on the Linux preparation host.
+The SlitCore package compiles and its 79 tests pass on the Linux preparation host with Swift 6.4.2.
+No Xcode project generation, app build, or UI test has run; those need macOS.
 
 ## Start here
 
@@ -21,7 +22,7 @@ No Swift or Xcode build has run on the Linux preparation host.
 | Path | Purpose |
 | --- | --- |
 | `project.yml` | XcodeGen source for app, UI tests, and shared scheme |
-| `App/Sources` | Native Grip shell; future camera and library implementation |
+| `App/Sources` | Native Grip shell; `App/Sources/Camera` holds the debug-only capability probe |
 | `App/Resources` | Privacy manifest; add native assets here |
 | `App/UITests` | Shell checks; extend as native workflows become available |
 | `Packages/SlitCore` | Platform-independent state rules and unit tests |
@@ -31,11 +32,14 @@ No Swift or Xcode build has run on the Linux preparation host.
 | `docs/research` | Portable snapshots of selected research from `/notes/` |
 | `experiments` | Browser prototype and earlier research experiments |
 | `scripts` | Setup, checks, project generation, packaging, and research export |
+| `to-do.json` | Task ledger for the build; coordination tooling owns it |
+| `to-do.schema.json` | Required shape of the task ledger |
 
 ## Commands
 
 ```sh
 make check       # Portable checks; works without Xcode
+make doctor      # macOS: verify installed tool versions
 make bootstrap   # macOS: validate tools and generate Slit.xcodeproj
 make test-core   # Swift 6 toolchain: test shared state rules
 make build       # macOS: unsigned simulator build

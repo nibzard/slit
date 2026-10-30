@@ -15,7 +15,13 @@ bootstrap:
 build:
 	./scripts/build-ios.sh
 test-core:
-	swift test --package-path Packages/SlitCore
+	@if command -v swift >/dev/null 2>&1; then \
+		swift test --package-path Packages/SlitCore; \
+	else \
+		echo 'Core tests need the Swift 6 toolchain. See docs/handoff/SETUP.md.' >&2; \
+		echo 'On this host, run make doctor and make check.' >&2; \
+		exit 2; \
+	fi
 test-ios:
 	./scripts/test-ios.sh
 handoff: check

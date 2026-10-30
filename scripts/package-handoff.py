@@ -7,16 +7,23 @@ import zipfile
 
 root = Path(__file__).resolve().parent.parent
 output = root / 'dist'
+# Fail before writing anything when a required root file is absent.
+root_files = ['README.md', 'AGENTS.md', 'Makefile', 'project.yml', '.gitignore', '.xcodegen-version',
+              'to-do.json', 'to-do.schema.json']
+missing = [name for name in root_files if not (root / name).is_file()]
+if missing:
+    raise SystemExit('Missing root files for the handoff archive: ' + ', '.join(missing))
 output.mkdir(exist_ok=True)
 files = []
-for name in ['README.md', 'AGENTS.md', 'Makefile', 'project.yml', '.gitignore', '.xcodegen-version']:
+for name in root_files:
     files.append(root / name)
 for name in ['App', 'Config', 'Packages', 'docs', 'scripts', '.github', 'experiments']:
     for path in (root / name).rglob('*'):
         if not path.is_file():
             continue
         relative = path.relative_to(root)
-        if any(part in {'.git', '.build', '.swiftpm', '__pycache__', 'DerivedData', 'build', 'dist', 'xcuserdata'} for part in relative.parts):
+        if any(part in {'.git', '.build', '.swiftpm', '__pycache__', 'DerivedData', 'build', 'dist',
+                        'xcuserdata', 'capability-probe-output'} for part in relative.parts):
             continue
         if path.name in {'Local.xcconfig', '.DS_Store'} or relative.as_posix() == 'App/Info.plist':
             continue

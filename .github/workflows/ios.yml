@@ -1,6 +1,7 @@
 name: Native bootstrap
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -10,12 +11,21 @@ concurrency:
   cancel-in-progress: true
 jobs:
   verify:
+    # Xcode version selection is recorded by the T003 baseline and left to the runner image until then.
     runs-on: macos-15
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - name: Install project generator
-        run: brew install xcodegen
+      # Install the exact generator version recorded in .xcodegen-version, not the Homebrew default.
+      - name: Install the pinned project generator
+        run: |
+          version="$(tr -d '[:space:]' < .xcodegen-version)"
+          curl --fail --silent --show-error --location \
+            --output "${RUNNER_TEMP}/xcodegen.zip" \
+            "https://github.com/yonaskolb/XcodeGen/releases/download/${version}/xcodegen.zip"
+          unzip -o -q "${RUNNER_TEMP}/xcodegen.zip" -d "${RUNNER_TEMP}/xcodegen-dist"
+          sudo "${RUNNER_TEMP}/xcodegen-dist/xcodegen/install.sh"
+          xcodegen --version
       - name: Verify portable files, core, and application
         run: make verify
       - name: Upload test results

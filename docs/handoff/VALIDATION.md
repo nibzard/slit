@@ -7,7 +7,7 @@ The browser prototype only validates an interaction proposal.
 
 | Command | Purpose | Limitation |
 | --- | --- | --- |
-| `make check` | Portable files, links, plist, JSON, shell syntax, and backlog coverage | Does not compile Swift |
+| `make check` | Required files, Python and shell syntax, privacy plist, JSON, portable links, project.yml and workflow YAML structure, task-ledger structure, acceptance coverage, and handoff-manifest freshness | Does not compile Swift; YAML parsing needs PyYAML |
 | `make test-core` | Admission limits, failure retention, hidden input, and stale focus operations | Does not test AVFoundation |
 | `make build` | Generates and compiles the app for an iOS simulator | Does not verify physical raw capture |
 | `make test-ios` | Grid persistence and explicit unavailable capture in the shell | Extend as native features become functional |

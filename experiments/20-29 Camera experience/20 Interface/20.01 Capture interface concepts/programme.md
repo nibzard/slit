@@ -86,3 +86,7 @@ Do not treat a prototype preference as proof of native capture performance.
 
 The local sample is a 1200 × 1600 image fetched from Unsplash on October 30, 2026.
 All three concepts use the same source. The image is sample content, not original work by this project.
+Provenance: the local file is `assets/street.jpg`.
+Rights stay with the photographer under the Unsplash license terms and do not permit redistribution under a project license.
+The internal developer handoff archive carries the file for prototype fidelity only.
+Any external or published distribution must remove or replace it.

@@ -1,0 +1,221 @@
+{"configuration": {"appBuild": "Slit-Dev-Synthetic", "captureSlotLimit": 2, "deviceModel": "synthetic", "focusMode": "continuousAutofocus", "formatMaximumHeight": 6048, "formatMaximumWidth": 8064, "osBuild": "synthetic", "rawPixelFormatCode": "HGVD"}, "kind": "configurationSnapshot", "schemaVersion": 1, "sequence": 1, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1236.3, "kind": "phaseDuration", "metric": "coldStart", "schemaVersion": 1, "sequence": 2, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1248.2, "kind": "phaseDuration", "metric": "coldStart", "schemaVersion": 1, "sequence": 3, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1492.4, "kind": "phaseDuration", "metric": "coldStart", "schemaVersion": 1, "sequence": 4, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 829.9, "kind": "phaseDuration", "metric": "coldStart", "schemaVersion": 1, "sequence": 5, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1434.6, "kind": "phaseDuration", "metric": "coldStart", "schemaVersion": 1, "sequence": 6, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1272.9, "kind": "phaseDuration", "metric": "coldStart", "schemaVersion": 1, "sequence": 7, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1009.6, "kind": "phaseDuration", "metric": "coldStart", "schemaVersion": 1, "sequence": 8, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1016.0, "kind": "phaseDuration", "metric": "coldStart", "schemaVersion": 1, "sequence": 9, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 422.5, "kind": "phaseDuration", "metric": "warmResume", "schemaVersion": 1, "sequence": 10, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 453.3, "kind": "phaseDuration", "metric": "warmResume", "schemaVersion": 1, "sequence": 11, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 691.4, "kind": "phaseDuration", "metric": "warmResume", "schemaVersion": 1, "sequence": 12, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 342.2, "kind": "phaseDuration", "metric": "warmResume", "schemaVersion": 1, "sequence": 13, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 314.9, "kind": "phaseDuration", "metric": "warmResume", "schemaVersion": 1, "sequence": 14, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 399.4, "kind": "phaseDuration", "metric": "warmResume", "schemaVersion": 1, "sequence": 15, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 562.8, "kind": "phaseDuration", "metric": "warmResume", "schemaVersion": 1, "sequence": 16, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 666.9, "kind": "phaseDuration", "metric": "warmResume", "schemaVersion": 1, "sequence": 17, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 23.6, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 18, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 22.7, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 19, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 19.0, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 20, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 45.1, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 21, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 25.4, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 22, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 21.7, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 23, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 37.0, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 24, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 13.4, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 25, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 30.5, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 26, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 18.1, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 27, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 42.3, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 28, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 21.1, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 29, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 30.3, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 30, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 41.5, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 31, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 31.4, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 32, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 6.2, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 33, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 42.6, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 34, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 13.2, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 35, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 16.6, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 36, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 28.8, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 37, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 14.1, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 38, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 11.2, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 39, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 34.1, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 40, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 10.0, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 41, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 25.2, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 42, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 8.9, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 43, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 42.9, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 44, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 21.8, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 45, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 29.6, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 46, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 42.2, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 47, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 15.4, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 48, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 9.4, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 49, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 35.5, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 50, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 43.2, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 51, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 8.9, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 52, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 45.9, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 53, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 10.2, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 54, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 23.4, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 55, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 16.8, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 56, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 14.9, "kind": "phaseDuration", "metric": "requestOverhead", "schemaVersion": 1, "sequence": 57, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 42.5, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 58, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 84.2, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 59, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 64.2, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 60, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 37.9, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 61, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 83.0, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 62, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 58.7, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 63, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 33.7, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 64, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 60.0, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 65, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 38.7, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 66, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 91.1, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 67, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 82.5, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 68, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 68.4, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 69, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 24.4, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 70, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 92.6, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 71, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 72.8, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 72, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 83.2, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 73, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 54.7, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 74, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 29.7, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 75, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 82.2, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 76, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 21.3, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 77, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 83.1, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 78, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 72.8, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 79, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 46.3, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 80, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 80.6, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 81, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 93.6, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 82, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 88.4, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 83, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 46.2, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 84, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 42.9, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 85, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 73.0, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 86, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 47.5, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 87, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 32.6, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 88, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 23.2, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 89, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 24.5, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 90, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 75.5, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 91, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 50.2, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 92, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 76.9, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 93, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 87.7, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 94, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 46.4, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 95, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 36.7, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 96, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 56.5, "kind": "phaseDuration", "metric": "acceptanceFeedback", "schemaVersion": 1, "sequence": 97, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "willCapture", "captureId": "00000000-0000-4000-8000-000000000000", "durationMilliseconds": 387.4, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 98, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishCapture", "captureId": "00000000-0000-4000-8000-000000000001", "durationMilliseconds": 359.0, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 99, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishProcessingPhoto", "captureId": "00000000-0000-4000-8000-000000000002", "durationMilliseconds": 317.4, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 100, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "willCapture", "captureId": "00000000-0000-4000-8000-000000000003", "durationMilliseconds": 373.4, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 101, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishCapture", "captureId": "00000000-0000-4000-8000-000000000004", "durationMilliseconds": 144.0, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 102, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishProcessingPhoto", "captureId": "00000000-0000-4000-8000-000000000005", "durationMilliseconds": 116.5, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 103, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "willCapture", "captureId": "00000000-0000-4000-8000-000000000006", "durationMilliseconds": 168.7, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 104, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishCapture", "captureId": "00000000-0000-4000-8000-000000000007", "durationMilliseconds": 68.0, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 105, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishProcessingPhoto", "captureId": "00000000-0000-4000-8000-000000000008", "durationMilliseconds": 161.4, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 106, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "willCapture", "captureId": "00000000-0000-4000-8000-000000000009", "durationMilliseconds": 389.1, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 107, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishCapture", "captureId": "00000000-0000-4000-8000-000000000010", "durationMilliseconds": 375.9, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 108, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishProcessingPhoto", "captureId": "00000000-0000-4000-8000-000000000011", "durationMilliseconds": 370.1, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 109, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "willCapture", "captureId": "00000000-0000-4000-8000-000000000012", "durationMilliseconds": 97.0, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 110, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishCapture", "captureId": "00000000-0000-4000-8000-000000000013", "durationMilliseconds": 98.1, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 111, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishProcessingPhoto", "captureId": "00000000-0000-4000-8000-000000000014", "durationMilliseconds": 105.2, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 112, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "willCapture", "captureId": "00000000-0000-4000-8000-000000000015", "durationMilliseconds": 113.2, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 113, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishCapture", "captureId": "00000000-0000-4000-8000-000000000016", "durationMilliseconds": 71.1, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 114, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishProcessingPhoto", "captureId": "00000000-0000-4000-8000-000000000017", "durationMilliseconds": 67.0, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 115, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "willCapture", "captureId": "00000000-0000-4000-8000-000000000018", "durationMilliseconds": 236.6, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 116, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishCapture", "captureId": "00000000-0000-4000-8000-000000000019", "durationMilliseconds": 153.9, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 117, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishProcessingPhoto", "captureId": "00000000-0000-4000-8000-000000000020", "durationMilliseconds": 88.6, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 118, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "willCapture", "captureId": "00000000-0000-4000-8000-000000000021", "durationMilliseconds": 313.8, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 119, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishCapture", "captureId": "00000000-0000-4000-8000-000000000022", "durationMilliseconds": 366.5, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 120, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishProcessingPhoto", "captureId": "00000000-0000-4000-8000-000000000023", "durationMilliseconds": 76.4, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 121, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "willCapture", "captureId": "00000000-0000-4000-8000-000000000024", "durationMilliseconds": 269.2, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 122, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishCapture", "captureId": "00000000-0000-4000-8000-000000000025", "durationMilliseconds": 264.4, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 123, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishProcessingPhoto", "captureId": "00000000-0000-4000-8000-000000000026", "durationMilliseconds": 99.6, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 124, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "willCapture", "captureId": "00000000-0000-4000-8000-000000000027", "durationMilliseconds": 238.5, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 125, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishCapture", "captureId": "00000000-0000-4000-8000-000000000028", "durationMilliseconds": 129.5, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 126, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"callbackPhase": "didFinishProcessingPhoto", "captureId": "00000000-0000-4000-8000-000000000029", "durationMilliseconds": 188.4, "kind": "phaseDuration", "metric": "callbackLatency", "schemaVersion": 1, "sequence": 127, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1376.5, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 128, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1592.0, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 129, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 651.8, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 130, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1162.9, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 131, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 676.3, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 132, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1391.4, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 133, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1572.1, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 134, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 750.2, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 135, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1503.7, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 136, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1589.3, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 137, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1245.4, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 138, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 603.0, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 139, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 720.5, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 140, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 506.4, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 141, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1559.5, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 142, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1317.5, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 143, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1662.5, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 144, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 472.5, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 145, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 773.0, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 146, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1504.1, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 147, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 779.2, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 148, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 441.5, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 149, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1225.0, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 150, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1019.0, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 151, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 879.4, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 152, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 872.4, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 153, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1352.3, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 154, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 605.1, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 155, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1329.2, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 156, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1698.3, "kind": "phaseDuration", "metric": "storageLatency", "schemaVersion": 1, "sequence": 157, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1912.1, "kind": "phaseDuration", "metric": "backlogDrain", "pendingCount": 0, "schemaVersion": 1, "sequence": 158, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1466.9, "kind": "phaseDuration", "metric": "backlogDrain", "pendingCount": 0, "schemaVersion": 1, "sequence": 159, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1167.5, "kind": "phaseDuration", "metric": "backlogDrain", "pendingCount": 0, "schemaVersion": 1, "sequence": 160, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 2569.0, "kind": "phaseDuration", "metric": "backlogDrain", "pendingCount": 0, "schemaVersion": 1, "sequence": 161, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 2115.6, "kind": "phaseDuration", "metric": "backlogDrain", "pendingCount": 0, "schemaVersion": 1, "sequence": 162, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 2328.3, "kind": "phaseDuration", "metric": "backlogDrain", "pendingCount": 0, "schemaVersion": 1, "sequence": 163, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 921.5, "kind": "phaseDuration", "metric": "backlogDrain", "pendingCount": 0, "schemaVersion": 1, "sequence": 164, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"durationMilliseconds": 1018.9, "kind": "phaseDuration", "metric": "backlogDrain", "pendingCount": 0, "schemaVersion": 1, "sequence": 165, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000100", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 166, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000101", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 167, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000102", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 168, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000103", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 169, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000104", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 170, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000105", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 171, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000106", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 172, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000107", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 173, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"input": "onscreen", "kind": "attempt", "outcome": "rejected", "rejectionCategory": "storageBlocked", "schemaVersion": 1, "sequence": 174, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000109", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 175, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000110", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 176, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000111", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 177, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000112", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 178, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000113", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 179, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000114", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 180, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000115", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 181, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"input": "onscreen", "kind": "attempt", "outcome": "rejected", "rejectionCategory": "outputUnavailable", "schemaVersion": 1, "sequence": 182, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000117", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 183, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000118", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 184, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000119", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 185, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000120", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 186, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000121", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 187, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000122", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 188, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000123", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 189, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000124", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 190, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000125", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 191, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"input": "onscreen", "kind": "attempt", "outcome": "rejected", "rejectionCategory": "outputUnavailable", "schemaVersion": 1, "sequence": 192, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000127", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 193, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000128", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 194, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000129", "input": "onscreen", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 195, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"input": "hardwareSecondary", "kind": "attempt", "outcome": "rejected", "rejectionCategory": "inactive", "schemaVersion": 1, "sequence": 196, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000201", "input": "hardwarePrimary", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 197, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000202", "input": "hardwareSecondary", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 198, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"input": "hardwarePrimary", "kind": "attempt", "outcome": "rejected", "rejectionCategory": "inactive", "schemaVersion": 1, "sequence": 199, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000204", "input": "hardwareSecondary", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 200, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000205", "input": "hardwarePrimary", "kind": "attempt", "outcome": "accepted", "schemaVersion": 1, "sequence": 201, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000300", "failureCode": "captureFailed", "kind": "attempt", "schemaVersion": 1, "sequence": 202, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000301", "failureCode": "saveRetained", "kind": "attempt", "schemaVersion": 1, "sequence": 203, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"captureId": "00000000-0000-4000-8000-000000000302", "failureCode": "previewFailed", "kind": "attempt", "schemaVersion": 1, "sequence": 204, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"kind": "queueLimits", "occupiedSlots": 0, "queueLimit": 2, "schemaVersion": 1, "sequence": 205, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"kind": "queueLimits", "occupiedSlots": 1, "queueLimit": 2, "schemaVersion": 1, "sequence": 206, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"kind": "queueLimits", "occupiedSlots": 2, "queueLimit": 2, "schemaVersion": 1, "sequence": 207, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"kind": "queueLimits", "occupiedSlots": 1, "queueLimit": 2, "schemaVersion": 1, "sequence": 208, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"kind": "queueLimits", "occupiedSlots": 2, "queueLimit": 2, "schemaVersion": 1, "sequence": 209, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}
+{"kind": "thermalState", "schemaVersion": 1, "sequence": 210, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001", "thermalState": "nominal"}
+{"kind": "thermalState", "schemaVersion": 1, "sequence": 211, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001", "thermalState": "nominal"}
+{"kind": "thermalState", "schemaVersion": 1, "sequence": 212, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001", "thermalState": "fair"}
+{"kind": "thermalState", "schemaVersion": 1, "sequence": 213, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001", "thermalState": "serious"}
+{"kind": "thermalState", "schemaVersion": 1, "sequence": 214, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001", "thermalState": "fair"}
+{"kind": "resourceUse", "occupiedSlots": 2, "peakMemoryBytes": 100091637, "pendingCount": 1, "previewStallCount": 1, "schemaVersion": 1, "sequence": 215, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001", "thermalState": "fair"}
+{"kind": "resourceUse", "occupiedSlots": 1, "peakMemoryBytes": 238359762, "pendingCount": 1, "previewStallCount": 3, "schemaVersion": 1, "sequence": 216, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001", "thermalState": "fair"}
+{"kind": "resourceUse", "occupiedSlots": 2, "peakMemoryBytes": 190528390, "pendingCount": 2, "previewStallCount": 0, "schemaVersion": 1, "sequence": 217, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001", "thermalState": "fair"}
+{"kind": "resourceUse", "occupiedSlots": 1, "peakMemoryBytes": 107767683, "pendingCount": 2, "previewStallCount": 1, "schemaVersion": 1, "sequence": 218, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001", "thermalState": "fair"}
+{"kind": "resourceUse", "occupiedSlots": 0, "peakMemoryBytes": 133142119, "pendingCount": 2, "previewStallCount": 2, "schemaVersion": 1, "sequence": 219, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001", "thermalState": "fair"}
+{"kind": "resourceUse", "occupiedSlots": 1, "peakMemoryBytes": 188100815, "pendingCount": 2, "previewStallCount": 0, "schemaVersion": 1, "sequence": 220, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001", "thermalState": "fair"}
+{"durationMilliseconds": null, "kind": "phaseDuration", "metric": "coldStart", "schemaVersion": 1, "sequence": 221, "sessionId": "5f1d0b2e-0000-4000-8000-000000000001"}

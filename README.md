@@ -40,6 +40,7 @@ make bootstrap   # macOS: validate tools and generate Slit.xcodeproj
 make test-core   # Swift 6 toolchain: test shared state rules
 make build       # macOS: unsigned simulator build
 make test-ios    # macOS: shell tests on an available iPhone simulator
+make verify      # Ordered portable, core, build, and app test checks
 make handoff     # Create dist/slit-developer-handoff.zip
 ```
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Portable handoff checks. This does not compile Swift or validate camera behavior."""
 from pathlib import Path
+import ast
 import json
 import plistlib
 import re
@@ -9,6 +10,11 @@ from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parent.parent
 errors = []
+for path in (ROOT / 'scripts').glob('*.py'):
+    try:
+        ast.parse(path.read_text(), filename=str(path))
+    except SyntaxError as error:
+        errors.append(f'{path}: {error}')
 required = ['project.yml', 'Packages/SlitCore/Package.swift', 'App/Sources/SlitApp.swift',
             'docs/specs/0002-first-native-mvp.md', 'docs/handoff/BACKLOG.md',
             'docs/handoff/STATUS.md', 'docs/handoff/SETUP.md']
@@ -51,11 +57,16 @@ spec = (ROOT / 'docs/specs/0002-first-native-mvp.md').read_text()
 ids = re.findall(r'^\| (M\d+) \|', spec, re.M)
 if ids != [f'M{i:02}' for i in range(1, 25)]:
     errors.append('Specification must contain all 24 unique acceptance IDs')
+acceptance_reports = [ROOT / 'docs/handoff/templates/acceptance-report.md',
+                      *(ROOT / 'docs/handoff/reports').rglob('acceptance-report.md')]
+for path in acceptance_reports:
+    if re.findall(r'^\| (M\d+) \|', path.read_text(), re.M) != ids:
+        errors.append(f'{path}: acceptance IDs must match the specification in order')
 backlog = (ROOT / 'docs/handoff/BACKLOG.md').read_text()
 for identifier in ids:
     if identifier not in backlog:
         errors.append(f'Acceptance check missing from backlog: {identifier}')
 if errors:
     raise SystemExit('\n'.join(errors))
-print('PASS: files, shell syntax, privacy plist, JSON, portable links, and acceptance coverage.')
+print('PASS: files, Python and shell syntax, privacy plist, JSON, portable links, and acceptance coverage.')
 print('NOT RUN: Swift compilation, Xcode project generation, UI tests, or physical-device tests.')

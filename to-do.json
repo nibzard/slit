@@ -131,12 +131,22 @@
       "id": "T007",
       "title": "Implement versioned metadata and durable admission order",
       "priority": 1,
-      "status": "doing",
-      "details": "Round 1, WP-04 local preparation; M11–M15. Implement the complete schema from specification 0002 section 7 using stable primitive values and explicit units. Separate requested settings from delivered metadata. Represent unavailable measurements as null. Include capture and session identity, request ordinal, libraryOrder, reproduction context, timing, original validation, and recovery fields. Add synthetic fixtures and round-trip, unknown-field, missing-field, and unsupported-version tests. Reserve order blocks through an atomically replaced high-watermark file before enabling capture. Admission uses memory; refill asynchronously and reject admission when no safe value remains. Test termination around reservation writes. Recover above committed, recoverable, and reserved values without reuse.\n\nAssignment 2026-10-30: the failed gpt-6-astra Codex dispatch no longer gates this task. The work runs directly in a Claude agent session on the Linux host (source and portable checks); Swift test execution still waits for the Mac baseline in T003.",
+      "status": "done",
+      "details": "Round 1, WP-04 local preparation; M11–M15. Implement the complete schema from specification 0002 section 7 using stable primitive values and explicit units. Separate requested settings from delivered metadata. Represent unavailable measurements as null. Include capture and session identity, request ordinal, libraryOrder, reproduction context, timing, original validation, and recovery fields. Add synthetic fixtures and round-trip, unknown-field, missing-field, and unsupported-version tests. Reserve order blocks through an atomically replaced high-watermark file before enabling capture. Admission uses memory; refill asynchronously and reject admission when no safe value remains. Test termination around reservation writes. Recover above committed, recoverable, and reserved values without reuse.\n\nAssignment 2026-10-30: the failed gpt-6-astra Codex dispatch no longer gates this task. The work runs directly in a Claude agent session on the Linux host (source and portable checks); Swift test execution still waits for the Mac baseline in T003.\n\nCompletion 2026-10-30: implemented against the normative capture.json version 1 field appendix added to specification 0002 section 7 in the same round. Codec covers the flattened wire schema with explicit null and failure taxonomy; reservation validates the persisted schema version, fails exhaustion and overflow explicitly, and recovers above the maximum of committed, recoverable, and reserved values. Evidence: the full SlitCore suite compiled and executed on this host with Swift 6.4.2 (Linux): 17 XCTest and 62 swift-testing tests passed, 0 failures, including 15 codec and 12 order-reservation tests; see docs/handoff/reports/2026-10-30-t007/. Follow-ups for T008: implement OrderReservationStore with real atomic replacement, and never rewrite recovered capture.json files through the codec (decode-encode drops unknown keys). For T009: surface OrderReservationFailure.exhausted as a brief admission rejection at the call site.",
       "depends_on": [
         "T005"
       ],
-      "updated_at": "2026-10-30T16:21:51Z",
+      "files": [
+        "docs/specs/0002-first-native-mvp.md",
+        "Packages/SlitCore/Sources/SlitCore/CaptureMetadataCodec.swift",
+        "Packages/SlitCore/Sources/SlitCore/OrderReservation.swift",
+        "Packages/SlitCore/Sources/SlitCore/SlitDefaults.swift",
+        "Packages/SlitCore/Tests/SlitCoreTests/CaptureMetadataCodecTests.swift",
+        "Packages/SlitCore/Tests/SlitCoreTests/OrderReservationTests.swift",
+        "docs/handoff/reports/2026-10-30-t007/local-checks.md",
+        "docs/handoff/reports/2026-10-30-t007/decisions.md"
+      ],
+      "updated_at": "2026-10-30T17:39:19Z",
       "tags": [
         "assigned:claude-session-2026-10-30"
       ]
@@ -224,12 +234,28 @@
       "id": "T015",
       "title": "Implement bounded diagnostics and repeatable measurement tools",
       "priority": 1,
-      "status": "doing",
-      "details": "Round 1, WP-08 preparation; M22–M24. Record monotonic phase durations, app-local identifiers, outcomes, configuration, thermal context, and queue limits. Cover cold start, warm resume, request overhead, feedback, named callback latency, storage latency, accepted fraction, backlog drain, and resource use. Label callback timing as a proxy. Rotate diagnostics within the initial 5 MiB limit. Exclude pixels, location, user photo names, and absolute photo paths. Export only on explicit user action. Prepare executable workload and report tooling for counts, medians, and 95th percentiles. Audit privacy declarations against implemented APIs, including timing and storage restrictions. Do not add unused declarations.\n\nAssignment 2026-10-30: the failed gpt-6-astra Codex dispatch no longer gates this task. The work runs directly in a Claude agent session on the Linux host (source, portable checks, and report tooling); Swift test execution still waits for the Mac baseline in T003.",
+      "status": "done",
+      "details": "Round 1, WP-08 preparation; M22–M24. Record monotonic phase durations, app-local identifiers, outcomes, configuration, thermal context, and queue limits. Cover cold start, warm resume, request overhead, feedback, named callback latency, storage latency, accepted fraction, backlog drain, and resource use. Label callback timing as a proxy. Rotate diagnostics within the initial 5 MiB limit. Exclude pixels, location, user photo names, and absolute photo paths. Export only on explicit user action. Prepare executable workload and report tooling for counts, medians, and 95th percentiles. Audit privacy declarations against implemented APIs, including timing and storage restrictions. Do not add unused declarations.\n\nAssignment 2026-10-30: the failed gpt-6-astra Codex dispatch no longer gates this task. The work runs directly in a Claude agent session on the Linux host (source, portable checks, and report tooling); Swift test execution still waits for the Mac baseline in T003.\n\nCompletion 2026-10-30: portable preparation only, as scoped. Closed event model with an injected clock, bounded rotation (5 MiB aggregate, 256 KiB segment trigger, 20-file cap, oldest-first eviction) recorded in a decision note, user-actioned export model, and scripts/diagnostics-report.py producing counts, medians, and nearest-rank 95th percentiles from a JSON Lines store. Evidence: the full SlitCore suite compiled and executed on this host with Swift 6.4.2 (Linux): 17 XCTest and 62 swift-testing tests passed, 0 failures, including 33 diagnostics tests; the report tool was run against the regenerated fixture; see docs/handoff/reports/2026-10-30-t015/. Follow-ups for T014: app-side clock, segment store under Caches, and index persistence. The privacy manifest must be re-audited when the file store lands.",
       "depends_on": [
         "T005"
       ],
-      "updated_at": "2026-10-30T16:21:51Z",
+      "files": [
+        "Packages/SlitCore/Sources/SlitCore/DiagnosticsClock.swift",
+        "Packages/SlitCore/Sources/SlitCore/DiagnosticsEvent.swift",
+        "Packages/SlitCore/Sources/SlitCore/DiagnosticsRecorder.swift",
+        "Packages/SlitCore/Sources/SlitCore/DiagnosticsRotation.swift",
+        "Packages/SlitCore/Sources/SlitCore/DiagnosticsExport.swift",
+        "Packages/SlitCore/Tests/SlitCoreTests/DiagnosticsEventTests.swift",
+        "Packages/SlitCore/Tests/SlitCoreTests/DiagnosticsRecorderTests.swift",
+        "Packages/SlitCore/Tests/SlitCoreTests/DiagnosticsRotationTests.swift",
+        "Packages/SlitCore/Tests/SlitCoreTests/DiagnosticsExportTests.swift",
+        "scripts/diagnostics-report.py",
+        "scripts/diagnostics-fixture.py",
+        "docs/handoff/reports/2026-10-30-t015/local-checks.md",
+        "docs/handoff/reports/2026-10-30-t015/decision.md",
+        "docs/handoff/reports/2026-10-30-t015/diagnostics-fixture.jsonl"
+      ],
+      "updated_at": "2026-10-30T17:39:19Z",
       "tags": [
         "assigned:claude-session-2026-10-30"
       ]

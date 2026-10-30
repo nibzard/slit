@@ -108,3 +108,10 @@ Do not place absolute times derived from system boot or disk-space values into e
 - Specification 0002: product behavior and acceptance checks.
 - `docs/handoff/BACKLOG.md`: implementation progress and dependencies.
 - `/notes/`: live research; `docs/research`: dated portable snapshots.
+
+## WP-01 source decision
+
+T005 selects a dedicated serial camera queue and defines shared value contracts.
+See the [ownership and service decision](reports/2026-10-30-t005/service-contract-decision.md)
+and [probe procedure](reports/2026-10-30-t005/capability-report.md).
+The debug probe does not replace production storage or the physical configuration decision in T006.

@@ -19,3 +19,5 @@ __pycache__/
 .env.*
 *.p12
 *.mobileprovision
+# Private capability-probe exports. Do not commit test photographs.
+capability-probe-output/

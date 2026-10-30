@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "source_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/specs/0002-first-native-mvp.md",
+    "docs/specs/0001-street-camera-mvp.md",
+    "docs/rfcs/0001-portable-photographic-looks.md",
+    "docs/handoff/STATUS.md",
+    "docs/handoff/ARCHITECTURE.md",
+    "docs/handoff/BACKLOG.md",
+    "docs/handoff/SETUP.md",
+    "docs/handoff/VALIDATION.md",
+    "docs/handoff/templates/capability-report.md",
+    "docs/handoff/templates/performance-report.md",
+    "docs/handoff/templates/acceptance-report.md"
+  ],
+  "goal": "Deliver Slit as a native Grip street camera for iPhone 16 Plus. Capture still photographs through the physical rear main camera at 1×, preserve original bytes, and provide reliable storage, recovery, review, and sharing. Complete all 24 physical acceptance checks and frozen performance gates before internal handback. Retain the later Dense monochrome milestone as a deferred proposal, subject to the post-capture scope decision.",
+  "tasks": [
+    {
+      "id": "T001",
+      "title": "Prepare reproducible local checks and acceptance tracking",
+      "priority": 1,
+      "status": "done",
+      "details": "Round 1, WP-00 local preparation. Inspect and run available portable checks. Verify that setup scripts and continuous integration invoke both core and application tests. Prepare dated evidence records for M01–M24. Record unavailable Swift, Xcode, simulator, and device checks explicitly. Preserve existing regression tests. Each implementation package must run make check, make test-core, and relevant native checks before completion. Static checks do not establish a build baseline. Change project.yml instead of generated project files.",
+      "files": [
+        ".github/workflows/ios.yml",
+        ".gitignore",
+        "Makefile",
+        "README.md",
+        "docs/handoff/SETUP.md",
+        "docs/handoff/VALIDATION.md",
+        "docs/handoff/reports/2026-10-30-t001/acceptance-report.md",
+        "docs/handoff/reports/2026-10-30-t001/capability-report.md",
+        "docs/handoff/reports/2026-10-30-t001/local-checks.md",
+        "docs/handoff/reports/2026-10-30-t001/performance-report.md",
+        "scripts/check.py"
+      ],
+      "updated_at": "2026-10-30T13:01:17Z"
+    },
+    {
+      "id": "T002",
+      "title": "Provide access to a Mac for native verification",
+      "priority": 1,
+      "status": "blocked",
+      "details": "Round 1 external prerequisite. Provide an accessible macOS execution environment that can run full Xcode, Swift 6, XcodeGen 2.46.0 or newer, and an iOS simulator. This prerequisite concerns access to the host; workers perform project setup and verification in T003.",
+      "blockers": [
+        "An operator must complete this prerequisite; coding workers cannot execute it.",
+        "The preparation host is Linux. No accessible Mac with the required native tools is established."
+      ],
+      "tags": [
+        "looper:finding:native-macos-access",
+        "looper:operator",
+        "round:1"
+      ],
+      "unblock_when": "Record evidence that the operator completed the action, then mark this task done. To delegate different work, explicitly change its contract and remove looper:operator."
+    },
+    {
+      "id": "T003",
+      "title": "Establish a verified native build baseline",
+      "priority": 1,
+      "status": "todo",
+      "details": "Round 1, WP-00. Follow SETUP.md. Run make bootstrap, make check, make test-core, make build, and make test-ios. Fix generation, compilation, concurrency, and test failures. Launch the shell. Record exact Xcode, software development kit, Swift, XcodeGen, and simulator versions. Verify iOS 18 API availability. Do not infer physical camera functionality from the shell or simulator. Broader device and operating-system support is outside this round.\n\nReview repair: Establish the native build baseline\nRun setup and verification on the accessible Mac. Repair failures, launch the shell, and record exact toolchain and simulator versions.\nEvidence: Portable checks pass; core and application tests could not execute. See the dated local checks report.\n\nReview repair: Verify the native build and tests\nRound 1: compile the probe and contracts, run core and native tests, and repair compiler or concurrency failures.\nEvidence: Swift is absent. Native build and UI test scripts require macOS/Xcode. See the T005 local verification report.\n\nReview repair: The native build baseline is unestablished and no Swift source has ever compiled\nT003 must run the ordered make verify on the Mac, fix project generation, compilation, concurrency, and test failures, launch the shell, and record exact Xcode, SDK, Swift, XcodeGen, and simulator versions with iOS 18 API availability. The acceptance criterion is a green verify run plus a dated report of the exact toolchain. This is unmet: the capability probe, the Grip shell, the SlitCore contracts, and all ten core tests and two UI tests are unverified by any compiler or test runner. Simulator results must not be read as physical camera evidence.\nEvidence: make check passes and states 'NOT RUN: Swift compilation, Xcode project generation, UI tests, or physical-device tests'. make test-core fails with exit 2 because swift is absent. docs/handoff/reports/2026-10-30-t005/local-checks.md records 'New core tests: Written, not executed'. Uncompiled sources include App/Sources/Camera/CapabilityProbe.swift, App/Sources/Camera/CapabilityProbeView.swift, and Packages/SlitCore/Sources/SlitCore/CaptureContracts.swift. T003 is todo and carries tag looper:finding:native-build-baseline.",
+      "depends_on": [
+        "T001",
+        "T002"
+      ],
+      "tags": [
+        "looper:finding:native-build-baseline"
+      ]
+    },
+    {
+      "id": "T004",
+      "title": "Provide signing inputs and the primary physical phone",
+      "priority": 1,
+      "status": "blocked",
+      "details": "Round 1 external prerequisite. Supply access to an iPhone 16 Plus and an authorized Apple development team. Provide a unique bundle identifier and complete account, device registration, and Developer Mode actions that require the operator. Keep identifiers in ignored Config/Local.xcconfig. Do not commit credentials, provisioning material, or user photographs. These inputs gate device execution, not autonomous source preparation.",
+      "blockers": [
+        "An operator must complete this prerequisite; coding workers cannot execute it.",
+        "No authorized signing setup or accessible iPhone 16 Plus is supplied."
+      ],
+      "tags": [
+        "looper:finding:signed-primary-device-inputs",
+        "looper:operator",
+        "round:1"
+      ],
+      "unblock_when": "Record evidence that the operator completed the action, then mark this task done. To delegate different work, explicitly change its contract and remove looper:operator."
+    },
+    {
+      "id": "T005",
+      "title": "Prepare the capability probe and shared service contracts",
+      "priority": 1,
+      "status": "done",
+      "details": "Round 1, WP-01 local preparation. Implement a probe for the physical rear builtInWideAngleCamera at zoom 1.0. Inspect connected output capabilities and record raw formats, dimensions, focus support, exposure range, readiness, and hardware event phases. Prepare a real Digital Negative (DNG) capture and neutral-decoder check without fabricated results. Define typed identity, durable order, metadata, commit, retry, discard, reconciliation, and result contracts. Record the serial camera ownership decision. Keep platform services in App/Sources and independent rules in Packages/SlitCore. Prepare source without waiting for signing; freeze device-dependent choices in T006.",
+      "depends_on": [
+        "T001"
+      ],
+      "files": [
+        ".gitignore",
+        "App/Sources/Camera/CapabilityProbe.swift",
+        "App/Sources/Camera/CapabilityProbeView.swift",
+        "App/Sources/SlitApp.swift",
+        "Packages/SlitCore/Sources/SlitCore/CaptureContracts.swift",
+        "Packages/SlitCore/Tests/SlitCoreTests/CaptureContractTests.swift",
+        "docs/handoff/ARCHITECTURE.md",
+        "docs/handoff/STATUS.md",
+        "docs/handoff/reports/2026-10-30-t005/capability-report.md",
+        "docs/handoff/reports/2026-10-30-t005/local-checks.md",
+        "docs/handoff/reports/2026-10-30-t005/service-contract-decision.md",
+        "docs/research/slit-capability-probe-2026-10-30.md",
+        "scripts/sync-research.py"
+      ],
+      "updated_at": "2026-10-30T13:11:22Z"
+    },
+    {
+      "id": "T006",
+      "title": "Verify physical capture capability and freeze configuration",
+      "priority": 1,
+      "status": "todo",
+      "details": "Round 1, WP-01; M02 and M11, with the initial M22 baseline. Run the probe on the primary phone. Save and open an actual Bayer DNG, verify delivered dimensions, and validate neutral decoding. Record autofocus, point focus, confirmed lens lock, automatic exposure and white balance, compensation range, hardware events, and readiness. Measure an initial capture/save loop. Freeze raw settings, dimensions, decoder, slot limit, and a conservative storage reserve derived from observed file sizes. Record exact phone, operating-system build, toolchain, and optional acceleration settings. Do not assume sensor resolution. Unsupported or impractical raw capture requires an explicit product decision; do not substitute another lens or processed-only capture.\n\nReview repair: Verify physical capability and freeze configuration\nRound 1: run the prepared probe on the authorized phone. Validate DNG bytes, dimensions, neutral decoding, focus, hardware phases, and readiness. Measure and freeze device-dependent settings.\nEvidence: The probe procedure is prepared. All physical results remain NOT RUN.",
+      "depends_on": [
+        "T003",
+        "T004",
+        "T005"
+      ],
+      "tags": [
+        "looper:finding:physical-capability-freeze"
+      ]
+    },
+    {
+      "id": "T007",
+      "title": "Implement versioned metadata and durable admission order",
+      "priority": 1,
+      "status": "doing",
+      "details": "Round 1, WP-04 local preparation; M11–M15. Implement the complete schema from specification 0002 section 7 using stable primitive values and explicit units. Separate requested settings from delivered metadata. Represent unavailable measurements as null. Include capture and session identity, request ordinal, libraryOrder, reproduction context, timing, original validation, and recovery fields. Add synthetic fixtures and round-trip, unknown-field, missing-field, and unsupported-version tests. Reserve order blocks through an atomically replaced high-watermark file before enabling capture. Admission uses memory; refill asynchronously and reject admission when no safe value remains. Test termination around reservation writes. Recover above committed, recoverable, and reserved values without reuse.\n\nAssignment 2026-10-30: the failed gpt-6-astra Codex dispatch no longer gates this task. The work runs directly in a Claude agent session on the Linux host (source and portable checks); Swift test execution still waits for the Mac baseline in T003.",
+      "depends_on": [
+        "T005"
+      ],
+      "updated_at": "2026-10-30T16:21:51Z",
+      "tags": [
+        "assigned:claude-session-2026-10-30"
+      ]
+    },
+    {
+      "id": "T008",
+      "title": "Implement atomic original storage and repeatable recovery",
+      "priority": 1,
+      "status": "todo",
+      "details": "Round 1, WP-04; M11–M15. Store unchanged original bytes and metadata in Application Support. Validate the nonempty image container without full raw development. Close both writes, finalize staged names, and atomically rename the bundle on the same filesystem. Publish Saved only after commit. An index failure after commit remains a saved original. Rebuild the index by durable request order. Reconcile staging with bounded work, isolate unreadable data, and preserve recoverable originals. Retry retains identity and bytes without exposure. Confirm discard of unsaved data; never delete committed originals automatically. Inject original, metadata, close, rename, and index failures. Terminate around commit boundaries and reconcile twice without duplicates or order reuse. Inventory implemented privacy-sensitive APIs.",
+      "depends_on": [
+        "T007"
+      ]
+    },
+    {
+      "id": "T009",
+      "title": "Implement the camera session and one-shot input",
+      "priority": 1,
+      "status": "todo",
+      "details": "Round 1, WP-02; M01, M04, M05, and M19. Implement permission grant, denial, Settings changes, session startup, readiness, interruptions, and recoverable errors. Keep library access available when capture is unavailable. Use one serial owner off the main thread. Retain photo delegates through terminal callbacks and create fresh raw settings per accepted request. Accept onscreen release inside once; movement outside cancels and holds do not repeat. Route supported primary and secondary hardware ended events to the same operation. Disable hardware capture outside active capture. Start with at most two slots, including saving and retained save failures. Never replay rejected input. Replace bootstrap disabled-shutter tests with permission, readiness, and failure tests.",
+      "depends_on": [
+        "T006",
+        "T007"
+      ]
+    },
+    {
+      "id": "T010",
+      "title": "Implement native Grip geometry and accessible controls",
+      "priority": 2,
+      "status": "todo",
+      "details": "Round 1, WP-03; M03, M10, and M21. Implement full uncropped framing in portrait and both landscapes using actual capture geometry. Keep the last supported orientation when flat or upside down. Use the specified colors, system font, safe areas, reserved status strip, and fixed shutter center. Target a 104-point shutter with the specified adaptation range and inset. Match the review return center and touch area. Keep other targets at least 44 points and review access at 52 points. Align the persistent, initially-off grid with the image; exclude it from hit testing, accessibility focus, review, and exports. Implement More with Grid, read-only Capture information, and diagnostics access. Support VoiceOver, larger text, Increased Contrast, and Reduce Motion. Add layout and preference tests; record physical reach and framing evidence.",
+      "depends_on": [
+        "T003",
+        "T006"
+      ]
+    },
+    {
+      "id": "T011",
+      "title": "Implement verified focus lock and exposure compensation",
+      "priority": 2,
+      "status": "todo",
+      "details": "Round 1, WP-05; M06–M09. Convert focus points through the rotated preview layer and ignore margins. Tap focus resumes continuous autofocus after settling without changing exposure metering. Use a 500-millisecond long press, 12-point movement tolerance, tap suppression, and a two-second acquisition/lock timeout. Show locked only after platform completion and state verification. Use session and operation tokens to reject stale completions. Apply the specified marker lifetimes. Capture never waits for focus. Preserve a valid lock through review; cancel pending acquisition on departure and reset lock after session recreation. Keep exposure and white balance automatic. Implement one-third-step compensation within the supported intersection of minus two to plus two exposure values, actual-value display, Reset, Done, accessible adjustment, same-run restoration, and relaunch reset. Include accessible center lock and cancellation tests.",
+      "depends_on": [
+        "T009",
+        "T010"
+      ]
+    },
+    {
+      "id": "T012",
+      "title": "Implement bounded neutral previews and ordered review",
+      "priority": 1,
+      "status": "todo",
+      "details": "Round 1, WP-06; M15–M17 and M20. Open the newest committed item by durable request order. Keep selection stable during later commits and ignore obsolete preview completions. Saved placeholders remain reviewable and shareable. Use the verified neutral decoder after commit, applying delivered orientation once. Allow one expensive development task and start with a 64 MiB decoded-preview cache. Measure full-resolution buffers separately. Cancel obsolete work and pause optional work under capture, storage, or memory pressure. Support adjacent navigation at fit scale, magnified panning, honest detail resolution, accessible Fit and previous/next actions. Preview failure preserves the original and offers retry. Camera return consumes its touch, matches the shutter position, and rechecks readiness without capture.",
+      "depends_on": [
+        "T006",
+        "T008",
+        "T010"
+      ]
+    },
+    {
+      "id": "T013",
+      "title": "Implement original sharing without changing stored bytes",
+      "priority": 1,
+      "status": "todo",
+      "details": "Round 1, WP-06; M18 and M24. Share only committed DNG originals through the system share sheet with the correct type and filename. Retain any required temporary copy until the activity finishes. Sharing must not modify or delete the original, request Photos permission merely to share, or depend on preview success. Cancellation preserves selection and gives no success claim. Disable capture during sharing. Verify shared bytes against stored bytes. Explain that removing the app removes its local library while external shared copies remain.",
+      "depends_on": [
+        "T012"
+      ]
+    },
+    {
+      "id": "T014",
+      "title": "Integrate capture, storage, review, and lifecycle recovery",
+      "priority": 1,
+      "status": "todo",
+      "details": "Round 1, WP-07; M04, M05, M08, M12, M13, M15, M17, M19, and M20. Connect independent camera, navigation, focus, original, and preview states. Preserve delegate and data ownership during late callbacks and navigation. Keep slots occupied until commit or actual data disposal, including retained save failures. Distinguish capture, save, preview, and session errors. Consolidate repeated blocking errors. Restore compensation before enabling capture after recreation. Preserve delivered data during backgrounding and screen lock within available execution time. Enforce the measured storage reserve, bounded queues, memory eviction, and thermal reductions. Test reordered callbacks, exhausted slots, same-identity retry, cancellation, no hidden capture, no replay, and no return-touch capture.",
+      "depends_on": [
+        "T008",
+        "T009",
+        "T011",
+        "T012",
+        "T013"
+      ]
+    },
+    {
+      "id": "T015",
+      "title": "Implement bounded diagnostics and repeatable measurement tools",
+      "priority": 1,
+      "status": "doing",
+      "details": "Round 1, WP-08 preparation; M22–M24. Record monotonic phase durations, app-local identifiers, outcomes, configuration, thermal context, and queue limits. Cover cold start, warm resume, request overhead, feedback, named callback latency, storage latency, accepted fraction, backlog drain, and resource use. Label callback timing as a proxy. Rotate diagnostics within the initial 5 MiB limit. Exclude pixels, location, user photo names, and absolute photo paths. Export only on explicit user action. Prepare executable workload and report tooling for counts, medians, and 95th percentiles. Audit privacy declarations against implemented APIs, including timing and storage restrictions. Do not add unused declarations.\n\nAssignment 2026-10-30: the failed gpt-6-astra Codex dispatch no longer gates this task. The work runs directly in a Claude agent session on the Linux host (source, portable checks, and report tooling); Swift test execution still waits for the Mac baseline in T003.",
+      "depends_on": [
+        "T005"
+      ],
+      "updated_at": "2026-10-30T16:21:51Z",
+      "tags": [
+        "assigned:claude-session-2026-10-30"
+      ]
+    },
+    {
+      "id": "T016",
+      "title": "Complete automated fault and recovery verification",
+      "priority": 1,
+      "status": "todo",
+      "details": "Round 1, WP-08; development fault coverage for M04–M20 and M24. Run make check, make test-core, make build, and make test-ios with meaningful integration coverage. Inject original-write, metadata-write, close, rename, index, and preview failures. Terminate before and after commit and order-reservation boundaries. Reconcile twice and prove no duplicate originals, false Saved state, overwrite, or reused order. Exercise stale focus completions, late callbacks, capacity exhaustion, retained failures, and return-touch handling. Verify optional work releases resources before originals. Record exact results and separate fault-injection evidence from physical camera evidence.",
+      "depends_on": [
+        "T014",
+        "T015"
+      ]
+    },
+    {
+      "id": "T017",
+      "title": "Measure the device baseline and freeze release gates",
+      "priority": 1,
+      "status": "todo",
+      "details": "Round 1, WP-08; M20, M22, and M23. Measure the integrated application on the primary phone. Record numerical cold-start, resume, sustainable-cadence, accepted-fraction, backlog-drain, and storage-reserve gates before acceptance runs. Preserve the fixed 95th-percentile limits of 50 milliseconds for request overhead and 100 milliseconds for feedback. Record configuration, rationale, decision references, and baseline limitations. A baseline does not approve itself. If street-capture performance is unsuitable, reduce optional work or obtain a documented scope decision. Do not hide rejected attempts, weaken gates, change framing, or substitute processed capture.",
+      "depends_on": [
+        "T006",
+        "T016"
+      ]
+    },
+    {
+      "id": "T018",
+      "title": "Pass all physical acceptance and performance checks",
+      "priority": 1,
+      "status": "todo",
+      "details": "Round 1, WP-08 and WP-09; M01–M24. Complete every applicable check on the iPhone 16 Plus, using development fault evidence only where permitted. Run 20 cold starts, 20 warm resumes, and at least 100 accepted captures. Run separate 50-attempt onscreen sequences at one and two attempts per second. Report observed attempts, accepted and rejected requests, capture and save failures, committed counts, rejection reasons, medians, and 95th percentiles. Include daylight, shade, low light, autofocus, locked focus, grid on/off, and preview active/idle comparisons. Test hardware holds and cancellations separately. Verify all committed DNG files, original sharing, accessibility, offline behavior, no automatic network traffic, screen lock, storage pressure, memory, and thermal behavior. All frozen gates must pass. Record failures and rerun affected checks after fixes.",
+      "depends_on": [
+        "T017"
+      ]
+    },
+    {
+      "id": "T019",
+      "title": "Prepare the internal build and complete field handback evidence",
+      "priority": 1,
+      "status": "todo",
+      "details": "Round 1, WP-09 local preparation. Add the app icon and required internal distribution assets. Prepare an installable development build using the authorized signing setup. Complete a real street session and record battery, thermal, motion sharpness, outdoor readability, reach, and visual concerns. Resolve release-blocking defects and repeat affected checks. Package source, capability, performance, and acceptance reports, known limitations, and installation instructions. Run make handoff and inspect the archive for required content and excluded credentials or user photographs. Record the next scope decision without activating monochrome work. This task does not authorize pushing, external publication, messaging, or signed-build distribution.",
+      "depends_on": [
+        "T018"
+      ]
+    },
+    {
+      "id": "T020",
+      "title": "Authorize and perform the internal signed-build handoff",
+      "priority": 2,
+      "status": "blocked",
+      "details": "Round 1 external delivery. After local preparation and all release gates pass, obtain the user's authorized recipient and delivery method for the signed internal build. Distribute only the reviewed internal artifact and reports. Do not publish an App Store release. Repository publication, team messaging, and license selection remain separate decisions and do not block local preparation.",
+      "depends_on": [
+        "T019"
+      ],
+      "blockers": [
+        "The current request authorizes planning only. Signed-build distribution has no specified recipient, method, or authorization."
+      ],
+      "tags": [
+        "round:1",
+        "looper:operator"
+      ],
+      "unblock_when": "T019 is complete and the user explicitly authorizes signed-build delivery to a named recipient through a specified method."
+    },
+    {
+      "id": "T021",
+      "title": "Freeze the deferred Dense monochrome rendering contract",
+      "priority": 3,
+      "status": "blocked",
+      "details": "Round 2 proposal, specification 0001 section 10. After the capture milestone passes and the next scope decision approves monochrome, freeze the raw adapter, shared base transform, profile revision, renderer version, and applicable portable-format contracts. Define exact profile references, development choices, hashes, deterministic grain seed, and explicit incompatibility errors. Use as-shot white balance and explicit defaults. Keep the separate five-profile import application outside this camera milestone. Do not require future platforms or a second renderer for Round 1 acceptance.",
+      "depends_on": [
+        "T019"
+      ],
+      "tags": [
+        "round:2",
+        "looper:deferred"
+      ],
+      "unblock_when": "All Round 1 acceptance gates pass and a documented post-field decision approves the one-look milestone."
+    },
+    {
+      "id": "T022",
+      "title": "Implement deferred monochrome review, recipes, and export",
+      "priority": 3,
+      "status": "blocked",
+      "details": "Round 2 proposal; L1–L5. Apply one versioned Dense monochrome profile in review while preserving original bytes. Compare Base and Look using the shared base rendering rather than an embedded preview. Save replayable recipes and reject unsupported versions explicitly. Use identical operations and parameters for final review and full-resolution JPEG export with an embedded sRGB profile. Preserve capture time and omit location by default. Provide full-resolution detail with consistent grain coordinates. Add no look picker or strength, grain, contrast, or white-balance sliders. Allow one expensive render at a time. Prioritize capture and original saving. Rendering or export failure preserves original and recipe and permits retry.",
+      "depends_on": [
+        "T021"
+      ],
+      "tags": [
+        "round:2",
+        "looper:deferred"
+      ],
+      "unblock_when": "The one-look milestone is approved and T021 freezes its rendering and recipe contracts."
+    },
+    {
+      "id": "T023",
+      "title": "Validate the deferred look without degrading capture",
+      "priority": 3,
+      "status": "blocked",
+      "details": "Round 2 proposal; L1–L6. Verify unchanged originals, recipe replay, explicit version errors, review/export agreement, consistent grain, bounded concurrent capture, and recoverable render/export failures. Review at least 12 originals covering sunlight, shade, movement, skin, signs, and low light. Record and resolve profile failures before visual acceptance. Repeat capture and field checks with rendering idle and active under equivalent conditions. Collect at least 100 accepted captures and 20 runs per startup measurement. Preserve Round 1 gates, including accepted fraction and backlog drain. Added rendering must increase median request overhead by no more than 10 milliseconds. Record counts, failures, memory, and thermal context. No broader platform support claim follows from this primary-phone validation.",
+      "depends_on": [
+        "T022"
+      ],
+      "tags": [
+        "round:2",
+        "looper:deferred"
+      ],
+      "unblock_when": "The one-look milestone is approved, T022 is complete, and the primary phone and required street-image set are available."
+    },
+    {
+      "id": "T024",
+      "title": "Task worker sessions fail on an unsupported model, so T007 and T015 are stalled rather than product-blocked",
+      "priority": 1,
+      "status": "blocked",
+      "details": "Round 1 local preparation must be able to run. T007 (versioned metadata and durable admission order) and T015 (bounded diagnostics and measurement tools) are recorded as blocked on 'execution: exit status 1', but the recorded sessions performed no project work: the worker runtime dispatched them to a Codex CLI configured with model gpt-6-astra, which the account rejects. This is an execution-environment failure, not a project prerequisite. Both tasks depend only on T005, which is done, so both can start now on the Linux host for source and portable checks; their swift test runs then need the Mac from T002. Correct the task-worker model configuration, then reset T007 and T015 to todo and dispatch them again. Do not create a new task for this; T007 and T015 already track the outcomes. T007 gates T008 through T014 and T016 through T019, and T015 gates T016, so the whole Round 1 critical path after T005 is idle until this is fixed.\nEvidence: The T007 session log contains only thread.started, turn.started, error, and turn.failed; the T015 log additionally records item.completed. Both fail with the message 'The gpt-6-astra model is not supported when using Codex with a ChatGPT account': /home/agent/.looper/slit-5e38cc58/runtime/task-4ecdb6e4dbd9405c/work-00-session-b9919588600943ae/events-00.jsonl (T007) and /home/agent/.looper/slit-5e38cc58/runtime/task-3da6da0412a7dc2e/work-00-session-cae07772550e4d52/events-00.jsonl (T015). Neither task directory contains checks, receipt.json, or summary.json, unlike the completed runs for T001 at task-fe0277964e633e62 and T005 at task-4c80a637dbb93c43. The backlog blockers on T007 and T015 point to those two files.\n\nUpdate 2026-10-30: the operator model-configuration fix is still outstanding for future looper dispatches, but T007 and T015 now run directly in a Claude agent session per the user's instruction, so the Round 1 critical path no longer waits on this task.",
+      "blockers": [
+        "An operator must complete this prerequisite; coding workers cannot execute it."
+      ],
+      "tags": [
+        "looper:finding:task-worker-model-config",
+        "looper:operator"
+      ],
+      "unblock_when": "Record evidence that the operator completed the action, then mark this task done. To delegate different work, explicitly change its contract and remove looper:operator."
+    }
+  ]
+}

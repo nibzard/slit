@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Overlay only on the fitted image rectangle. Never include in image rendering.
 struct CompositionGrid: View {
-    @Environment(\.accessibilityContrast) private var contrast
+    @Environment(\.colorSchemeContrast) private var contrast
 
     var body: some View {
         GeometryReader { geometry in

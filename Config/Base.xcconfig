@@ -1,0 +1,4 @@
+// Placeholder identity works for simulator builds. Set a unique identifier for device builds.
+SLIT_BUNDLE_ID = dev.example.slit
+SLIT_TEAM_ID =
+#include? "Local.xcconfig"

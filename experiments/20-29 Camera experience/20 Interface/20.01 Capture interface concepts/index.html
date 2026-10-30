@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Slit — Grip refinement</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead"><a class="wordmark" href="#">slit<span> / studies</span></a><span class="edition">20.01 &nbsp; / &nbsp; OCT 2026</span></header>
+<button id="leave-immersive" hidden>← Study</button>
+<main>
+<section class="intro">
+<div><p class="eyebrow">A CAMERA FOR THE STREET</p><h1>Keep the moment.<br>Lose the friction.</h1></div>
+<div class="intro-aside"><p>Grip, refined for one-handed capture.<br>Your chosen direction. The same simple camera.</p><p class="prototype-note"><span class="dot"></span> Interactive study · simulated photographs</p></div>
+</section>
+<div class="study-toolbar">
+<nav class="concept-tabs" aria-label="Choose a concept">
+<button data-view="all" aria-pressed="false">Compare all</button><button data-view="quiet" aria-pressed="false">01 Quiet</button><button data-view="daylight" aria-pressed="false">02 Daylight</button><button data-view="grip" aria-pressed="false">03 Grip</button>
+</nav>
+<div class="tools"><button id="choose-photo" class="upload">Use your photo <span aria-hidden="true">↗</span></button><button id="try-phone">Try full screen</button><input id="scene-upload" type="file" accept="image/jpeg,image/png,image/webp" hidden><button id="reset">Reset study</button></div>
+</div>
+<p class="instruction">Try the shutter. Tap the image to focus. Hold to lock. Open the thumbnail to review.</p>
+<div class="concepts" id="concepts"></div>
+<section class="comparison">
+<div><p class="eyebrow">THE CHOSEN DIRECTION</p><h2>Grip. A clear next step.</h2></div>
+<p>Try locking focus, taking a photograph, and returning from review. The return button sits where your thumb finds the shutter.</p>
+</section>
+<footer><span>HTML interaction prototype. No camera access. No files are captured or saved.</span><span>Sample image: <a href="https://images.unsplash.com/photo-1449824913935-59a10b8d2000" target="_blank" rel="noreferrer">Unsplash</a></span></footer>
+</main>
+<template id="camera-template">
+<article class="concept">
+<div class="concept-heading"><span class="concept-number"></span><h2></h2><span class="concept-tag"></span></div>
+<div class="phone" tabindex="-1">
+<div class="camera-view">
+<div class="statusbar" aria-hidden="true"><span>9:41</span><span class="island"></span><span class="status-icons">▮▮▮ <span class="battery"></span></span></div>
+<div class="camera-top"><span class="camera-wordmark">slit</span><button class="icon-button more" aria-label="More information"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></div>
+<div class="viewfinder" role="button" tabindex="0" aria-label="Viewfinder. Tap to focus. Hold to lock focus. Press L to lock with the keyboard.">
+<img class="scene" src="assets/street.jpg" alt="A pedestrian crossing a sunlit avenue between tall buildings" draggable="false">
+<svg class="composition-grid" viewBox="0 0 3 3" preserveAspectRatio="none" aria-hidden="true" hidden><path class="grid-shadow" d="M1 0V3 M2 0V3 M0 1H3 M0 2H3"/><path class="grid-light" d="M1 0V3 M2 0V3 M0 1H3 M0 2H3"/></svg><span class="focus-marker" hidden></span><span class="capture-flash"></span>
+</div>
+<div class="state-strip"><button class="focus-lock" hidden aria-label="Focus locked. Return to autofocus"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="8" width="10" height="8" rx="2"/><path d="M7 8V6a3 3 0 0 1 6 0v2"/></svg> Focus locked <span>×</span></button><span class="capture-status" role="status" aria-live="polite"></span><button class="ev-value" hidden aria-label="Adjust exposure"></button></div>
+<div class="exposure" hidden><label>Exposure <output>0.0</output><input class="ev-slider" type="range" min="-2" max="2" step="0.1" value="0" aria-label="Exposure compensation"></label><button class="ev-reset">Reset</button><button class="ev-done" aria-label="Close exposure control">✓</button></div>
+<div class="camera-bottom"><button class="thumbnail" disabled aria-label="Review latest photograph"><span class="empty-thumb" aria-hidden="true"></span><img hidden alt="Latest simulated photograph"></button><button class="shutter" aria-label="Take photograph"><span></span></button><span class="balance" aria-hidden="true"></span></div>
+<div class="home-indicator" aria-hidden="true"></div>
+</div>
+<section class="panel more-panel" hidden aria-label="Camera information"><div class="panel-head"><h3>Just the essentials.</h3><button class="close-more icon-button" aria-label="Close information">×</button></div><label class="grid-setting"><span>Grid<small>3 × 3 composition guide</small></span><input class="grid-toggle" type="checkbox" role="switch" aria-label="Grid"><span class="switch-track" aria-hidden="true"></span></label><p class="panel-kicker">CAPTURE STUDY</p><dl><div><dt>Camera</dt><dd>Standard main · 1×</dd></div><div><dt>Capture</dt><dd>Stills only</dd></div><div><dt>Focus</dt><dd>Tap or hold to lock</dd></div><div><dt>Exposure</dt><dd>Automatic + compensation</dd></div></dl><p class="panel-note">This study uses a sample photograph. Focus, exposure, and saving are simulated. Your camera is never opened.</p><button class="text-action lock-action">Try focus lock</button><p class="panel-note shortcuts">Keyboard: Space takes a photograph when the camera is active. L locks focus on the viewfinder. Escape closes a panel.</p></section>
+<section class="panel review-panel" hidden aria-label="Photograph review"><div class="panel-head"><button class="back-camera text-action">← Camera</button><span class="review-title">Review</span><span class="review-index"></span></div><div class="review-image-wrap"><img class="review-image" alt="Simulated capture of the sample scene"></div><div class="review-navigation"><button class="previous icon-button" aria-label="Previous photograph">←</button><span class="review-caption"></span><button class="next icon-button" aria-label="Next photograph">→</button></div><div class="review-return"><span class="review-hint">Swipe to browse</span><button class="return-camera" aria-label="Return to camera without taking a photograph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6l1.5-2h5L16 6h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><circle cx="12" cy="12.5" r="3.5"/></svg><span>Camera</span></button></div><div class="review-home home-indicator" aria-hidden="true"></div><div class="review-details"><p class="panel-kicker">SIMULATED CAPTURE</p><h3>The moment stays yours.</h3><p>This is the sample image with your exposure setting. No original file was captured or saved.</p></div></section>
+</div>
+<div class="concept-description"><h3></h3><p></p></div>
+</article>
+</template>
+<script src="app.js"></script>
+</body>
+</html>

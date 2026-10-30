@@ -1,0 +1,3 @@
+// Copy to Local.xcconfig. Keep personal signing configuration out of source control.
+SLIT_BUNDLE_ID = com.yourcompany.slit
+SLIT_TEAM_ID = YOUR_TEAM_ID

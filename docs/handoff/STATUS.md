@@ -1,0 +1,54 @@
+# Bootstrap status
+
+Prepared: October 30, 2026.
+
+## Present
+
+- Authoritative native MVP specification with 24 acceptance checks.
+- Selected Grip prototype with optional grid and a portable offline HTML bundle.
+- XcodeGen configuration for an iOS 18 app, UI test target, and shared Slit scheme.
+- SwiftUI development shell with a persistent grid setting and disabled capture controls.
+- Local SlitCore package with bounded capture admission and focus-operation invalidation.
+- Eight unit tests for capacity, failure retention, hidden input, duplicate requests, and stale focus callbacks.
+- Two UI tests for unavailable capture and grid persistence.
+- Camera permission description and a privacy manifest covering the shell's UserDefaults use.
+- macOS scripts, a continuous integration workflow, portable checks, and a handoff archive script.
+- Work packages and templates for capability, performance, acceptance, and handoff decisions.
+
+## Not implemented
+
+No session opens. No camera permission is requested by the current shell.
+No photograph is captured, developed, committed, reviewed, or shared.
+The shell's placeholder and disabled controls make this state explicit.
+
+No camera controller, original store, durable metadata codec, preview worker, or library service exists yet.
+The core types are not wired to a camera. They enforce a subset of the specification's rules only.
+The shell uses a placeholder frame; native framing and orientation remain part of WP-02 and WP-03.
+There is no app icon or distribution asset set. Add those before internal distribution in WP-09.
+
+## Verification
+
+| Check | Status |
+| --- | --- |
+| Portable repository checks | Passed; see [the validation report](reports/bootstrap-verification.md) |
+| Python syntax and shell syntax | Run during handoff preparation |
+| Configuration YAML and privacy plist parsing | Run during handoff preparation |
+| Swift compilation and core tests | Not run: Swift is absent on this Linux host |
+| Xcode project generation and simulator build | Not run: macOS, Xcode, and XcodeGen are absent |
+| UI tests | Written, not run |
+| Continuous integration workflow | Configured, not run remotely |
+| Physical-device acceptance M01–M24 | Not run |
+
+The first receiving developer must run the macOS build and tests before accepting the scaffold as a build baseline.
+Fix any compile or generation issues in WP-00 and record the actual toolchain.
+Do not treat static file checks as proof that the application builds.
+
+## Remaining team inputs
+
+- Assign named owners to the roles in the backlog.
+- Supply an Apple development team, a unique bundle identifier, and an iPhone 16 Plus for testing.
+- Select the team's repository remote and review process.
+- Agree on numerical device-dependent performance gates after the capability baseline.
+- Choose any distribution license separately; no third-party camera code was copied into the scaffold.
+
+These inputs do not prevent source implementation. Signing and the physical device are required for device acceptance.

@@ -43,7 +43,7 @@ There is no app icon or distribution asset set. Add those before internal distri
 | Xcode project generation and simulator build | Passed 2026-10-30: XcodeGen 2.46.0 generated the project and Xcode 27.2 built the app for the simulator unsigned; see [T003](reports/2026-10-30-t003/local-checks.md) |
 | UI tests | Passed 2026-10-30: both shell tests on an iPhone 18 Pro simulator with iOS 27.0 after two iOS 27 query fixes; see [T003](reports/2026-10-30-t003/local-checks.md) |
 | Continuous integration workflow | Configured, not run remotely |
-| Physical-device acceptance M01–M24 | Not run |
+| Physical-device acceptance M01–M24 | Not run as acceptance; the first physical capability probe session on October 30, 2026 produced a byte-exact 4032x3024 Bayer DNG and a neutral decode on the iPhone 16 Plus; see [T006](reports/2026-10-30-t006/capability-report.md) |
 
 The macOS build baseline was accepted on October 30, 2026; see [T003](reports/2026-10-30-t003/local-checks.md).
 Signing and the physical iPhone 16 Plus remain required before device acceptance.
@@ -58,6 +58,15 @@ Do not treat static file checks or a simulator build as proof that the applicati
 - Choose any distribution license separately; no third-party camera code was copied into the scaffold.
 
 These inputs do not prevent source implementation. Signing and the physical device are required for device acceptance.
+
+## ## T006 first device probe session
+
+The physical probe ran on the iPhone 16 Plus (iOS 27.0.1) on October 30, 2026.
+Three captures: two on-screen and one from the Camera Control hardware button.
+Every original measured exactly 6,391,988 bytes at 4032x3024 with byte-exact writes and clean decodes.
+See the [capability report](reports/2026-10-30-t006/capability-report.md).
+Still open for WP-01: focus-lock execution with sharpness evidence, a repeat hardware-timing set,
+secondary (volume) event observation, and the frozen raw-dimension decision by the product owner.
 
 ## T005 source preparation
 

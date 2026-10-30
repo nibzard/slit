@@ -11,6 +11,7 @@ The browser prototype only validates an interaction proposal.
 | `make test-core` | Admission limits, failure retention, hidden input, and stale focus operations | Does not test AVFoundation |
 | `make build` | Generates and compiles the app for an iOS simulator | Does not verify physical raw capture |
 | `make test-ios` | Grid persistence and explicit unavailable capture in the shell | Extend as native features become functional |
+| `make verify` | Runs check, test-core, build, and test-ios in order | Stops at the first failure; requires native tools |
 
 The UI test that expects a disabled shutter is a bootstrap check.
 Replace it with explicit permission, readiness, and failure-state checks when WP-02 connects the camera.
@@ -20,6 +21,8 @@ Keep pure-state tests as regression coverage when connecting the platform servic
 ## Evidence to collect
 
 Copy the templates into a dated directory under `docs/handoff/reports/`.
+The [2026-10-30 local preparation record](reports/2026-10-30-t001/local-checks.md) tracks initial checks and missing evidence.
+`make check` verifies that acceptance templates and dated acceptance reports contain M01–M24 once, in order.
 Use a synthetic identifier for each run. Keep user photos outside the repository.
 
 - [Capability report](templates/capability-report.md).

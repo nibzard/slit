@@ -1,4 +1,11 @@
-.PHONY: check doctor bootstrap build test-core test-ios handoff
+.PHONY: check doctor bootstrap build test-core test-ios verify handoff
+.DEFAULT_GOAL := check
+# Keep these steps ordered, including when make runs with -j.
+verify:
+	$(MAKE) check
+	$(MAKE) test-core
+	$(MAKE) build
+	$(MAKE) test-ios
 check:
 	python3 scripts/check.py
 doctor:

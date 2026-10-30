@@ -14,9 +14,8 @@ Record the exact installed versions in the [capability report](templates/capabil
 2. Open Xcode, complete its first-launch setup, and install an iOS simulator runtime.
 3. Install XcodeGen with `brew install xcodegen` if it is absent.
 4. Run `make bootstrap` from the project root.
-5. Run `make check` and `make test-core`.
-6. Run `make build` and `make test-ios`.
-7. Open `Slit.xcodeproj`, select Slit, and run the development shell.
+5. Run `make verify` to check portable files, test core rules, build, and test the app in order.
+6. Open `Slit.xcodeproj`, select Slit, and run the development shell.
 
 The scripts select an installed iPhone simulator. They prefer iPhone 16 Plus when available.
 Override selection with an installed simulator identifier:
@@ -28,6 +27,10 @@ SLIT_SIMULATOR_ID=YOUR_SIMULATOR_UUID make test-ios
 
 The core package's tests run separately from the app scheme with `make test-core`.
 The Slit scheme contains the app's UI tests. Both commands are required in continuous integration.
+Local setup and continuous integration use the same `make verify` target.
+It stops at the first failure. Run unavailable checks separately when recording host limitations.
+Run `make check`, `make test-core`, and relevant native checks for each implementation package.
+Record tool versions and results before accepting a native build baseline.
 
 ## Device signing
 
@@ -48,6 +51,8 @@ The simulator scripts intentionally disable signing. Run device builds from Xcod
 
 XcodeGen creates `Slit.xcodeproj` and `App/Info.plist` from `project.yml`.
 Both are ignored generated outputs. Re-run `make bootstrap` after changing the project specification.
+Builds and test results use ignored `build/`; Swift package output uses ignored `.build/` and `.swiftpm/`.
+Coverage profiles and handoff archives are also ignored. Checks must not change source files.
 Edit permission strings, targets, scheme definitions, and supported orientations in `project.yml`.
 
 ## Common setup failures

@@ -16,16 +16,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install project generator
         run: brew install xcodegen
-      - name: Check portable handoff
-        run: make check
-      - name: Record toolchain
-        run: make doctor
-      - name: Test core state rules
-        run: make test-core
-      - name: Build simulator app
-        run: make build
-      - name: Run shell UI tests
-        run: make test-ios
+      - name: Verify portable files, core, and application
+        run: make verify
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4

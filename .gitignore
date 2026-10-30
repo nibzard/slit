@@ -5,6 +5,9 @@ DerivedData/
 build/
 dist/
 *.xcresult/
+# Generated test coverage profiles.
+*.profraw
+*.profdata
 Slit.xcodeproj/
 App/Info.plist
 Config/Local.xcconfig

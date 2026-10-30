@@ -13,8 +13,15 @@ struct SlitApp: App {
 
     var body: some Scene {
         WindowGroup {
-            GripShellView()
-                .preferredColorScheme(.dark)
+            #if DEBUG
+            if ProcessInfo.processInfo.arguments.contains("--capability-probe") {
+                CapabilityProbeView().preferredColorScheme(.dark)
+            } else {
+                GripShellView().preferredColorScheme(.dark)
+            }
+            #else
+            GripShellView().preferredColorScheme(.dark)
+            #endif
         }
     }
 }

@@ -21,7 +21,7 @@ No session opens. No camera permission is requested by the current shell.
 No photograph is captured, developed, committed, reviewed, or shared.
 The shell's placeholder and disabled controls make this state explicit.
 
-No camera controller, original store, durable metadata codec, preview worker, or library service exists yet.
+No production camera controller, original store, durable metadata codec, preview worker, or library service exists yet.
 The core types are not wired to a camera. They enforce a subset of the specification's rules only.
 The shell uses a placeholder frame; native framing and orientation remain part of WP-02 and WP-03.
 There is no app icon or distribution asset set. Add those before internal distribution in WP-09.
@@ -52,3 +52,13 @@ Do not treat static file checks as proof that the application builds.
 - Choose any distribution license separately; no third-party camera code was copied into the scaffold.
 
 These inputs do not prevent source implementation. Signing and the physical device are required for device acceptance.
+
+## T005 source preparation
+
+A debug-only capability probe and shared service contracts are now prepared.
+Use `--capability-probe` in a Debug launch after the native build baseline is available.
+See the [probe procedure](reports/2026-10-30-t005/capability-report.md),
+[service decision](reports/2026-10-30-t005/service-contract-decision.md), and
+[local verification](reports/2026-10-30-t005/local-checks.md).
+Swift and native checks remain unavailable on this host. No device result is claimed.
+T006 must verify the real DNG, neutral decoder, focus, hardware input, and configuration.

@@ -65,8 +65,9 @@ The physical probe ran on the iPhone 16 Plus (iOS 27.0.1) on October 30, 2026.
 Three captures: two on-screen and one from the Camera Control hardware button.
 Every original measured exactly 6,391,988 bytes at 4032x3024 with byte-exact writes and clean decodes.
 See the [capability report](reports/2026-10-30-t006/capability-report.md).
-Still open for WP-01: focus-lock execution with sharpness evidence, a repeat hardware-timing set,
-secondary (volume) event observation, and the frozen raw-dimension decision by the product owner.
+The product owner accepted the [dimension freeze at 4032x3024](reports/2026-10-30-t006/dimension-freeze-decision.md),
+closing the WP-01 configuration decision. Remaining observations (repeat hardware timings, secondary
+volume events, focus-lock execution with sharpness) move to WP-02/WP-05/WP-08 measurement work.
 
 ## T005 source preparation
 

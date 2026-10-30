@@ -7,6 +7,7 @@ import UniformTypeIdentifiers
 /// Queue confinement: all mutable state and AVFoundation objects stay on `queue`.
 /// Delegate callbacks copy file bytes before enqueueing. The worker receives only values.
 /// No session, device, output, or mutable report escapes this owner.
+/// The single capture slot has a bounded abandonment path; see `terminalCallbackTimeoutSeconds`.
 final class CapabilityProbe: NSObject, @unchecked Sendable, AVCapturePhotoCaptureDelegate {
     struct Update: Sendable {
         let text: String
@@ -36,6 +37,15 @@ final class CapabilityProbe: NSObject, @unchecked Sendable, AVCapturePhotoCaptur
     private var files: [URL] = []
     private let publish: @Sendable (Update) -> Void
 
+    /// Maximum wait, in seconds, for the terminal `didFinishCaptureFor` callback
+    /// of the single probe slot. An unaccelerated raw request from the rear main
+    /// camera normally reaches the terminal callback within a few seconds.
+    /// Fifteen seconds leaves a wide margin for slow debug pipelines. It still
+    /// bounds how long a lost terminal callback can reject later captures and
+    /// retain the delegate. This is a debug recovery bound, not a product
+    /// capture timeout.
+    private static let terminalCallbackTimeoutSeconds = 15
+
     init(publish: @escaping @Sendable (Update) -> Void) {
         self.publish = publish
         super.init()
@@ -61,7 +71,12 @@ final class CapabilityProbe: NSObject, @unchecked Sendable, AVCapturePhotoCaptur
         queue.async {
             self.active = false
             self.session.stopRunning()
-            self.record("Session stopped; pending delivery remains owned")
+            // A stopped session may never return the terminal callback. Abandon
+            // an in-flight request now instead of waiting for the timeout.
+            if let id = self.pendingID {
+                self.abandonInFlight(id: id, reason: "Probe stopped while the request was in flight")
+            }
+            self.record("Session stopped; pending write delivery remains owned")
         }
     }
 
@@ -178,8 +193,51 @@ final class CapabilityProbe: NSObject, @unchecked Sendable, AVCapturePhotoCaptur
         requestedInstant = ContinuousClock.now
         report["captureSource"] = source
         report["neutralDecode"] = "NOT RUN"
+        // Schedule abandonment before submitting so the request cannot be lost
+        // between submission and scheduling. The id check keeps the timeout
+        // silent once the terminal callback has reset the slot.
+        queue.asyncAfter(deadline: .now() + .seconds(Self.terminalCallbackTimeoutSeconds)) { [weak self, id = settings.uniqueID] in
+            self?.abandonInFlight(id: id,
+                                  reason: "Terminal callback did not arrive within \(Self.terminalCallbackTimeoutSeconds) s")
+        }
         record("Accepted raw request \(settings.uniqueID)")
         output.capturePhoto(with: settings, delegate: self)
+    }
+
+    /// Abandons the in-flight request `id` and frees the single probe slot.
+    /// A lost terminal callback would otherwise reject every later capture
+    /// forever and retain the delegate permanently. The serial-ownership design
+    /// is unchanged: one request owns the slot, and late callbacks for `id` are
+    /// ignored because `pendingID` no longer matches.
+    ///
+    /// Delivered bytes survive abandonment for a manual retry. Raw bytes that
+    /// `didFinishProcessingPhoto` already delivered move into
+    /// `retainedForRetry` before the slot state clears, so `retryWrite()` can
+    /// still persist them.
+    ///
+    /// Queue interleaving: `delivered` is written only on `queue`, by
+    /// `captureOnQueue`, by the two photo callbacks, and here. This method
+    /// therefore reads a settled value. A processing callback that is enqueued
+    /// but not run yet returns early from its `pendingID` guard once this
+    /// method clears `pendingID`; those bytes leave with the released delegate.
+    /// The scheduled timeout of a request whose terminal callback already ran
+    /// also returns early, so this move cannot displace bytes that a failed
+    /// write retained. The probe keeps one retry slot. A capture that is
+    /// accepted after an abandonment supersedes rescued bytes that no retry has
+    /// persisted yet.
+    private func abandonInFlight(id: Int64, reason: String) {
+        dispatchPrecondition(condition: .onQueue(queue))
+        guard working, pendingID == id else { return }
+        // The terminal callback never arrived, so `writeArtifacts` never ran.
+        // Keep the delivered bytes on the retry path instead of dropping them.
+        let rescuedBytes = delivered
+        if let bytes = rescuedBytes, !bytes.isEmpty { retainedForRetry = bytes }
+        delivered = nil
+        pendingID = nil
+        retainedDelegate = nil
+        working = false
+        report["captureError"] = reason
+        record("Abandoned request \(id); \(reason); retainedRawBytes=\(rescuedBytes?.count ?? 0)")
     }
 
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
@@ -218,9 +276,17 @@ final class CapabilityProbe: NSObject, @unchecked Sendable, AVCapturePhotoCaptur
         }
     }
 
+    /// Writes the retained bytes again. Retained bytes come from a failed write
+    /// or from an abandoned request that had already delivered raw bytes. An
+    /// in-flight request owns the artifact folder, so the retry waits until
+    /// that request finishes.
     func retryWrite() {
         queue.async {
             guard let bytes = self.retainedForRetry else { return }
+            if let inFlight = self.pendingID {
+                self.record("Retry deferred; request \(inFlight) still owns the artifact folder")
+                return
+            }
             self.retainedForRetry = nil
             self.writeArtifacts(bytes)
         }

@@ -23,6 +23,7 @@ The report contains all raw formats, Bayer formats, active format, maximum dimen
 exposure compensation range, continuous exposure and white balance support, readiness transitions, and observed hardware phases.
 Hardware handlers identify primary and secondary actions; they do not invent the physical button identity.
 Only ended events request capture. Readiness and one occupied probe slot still gate admission.
+A request whose terminal `didFinishCaptureFor` callback does not arrive within 15 seconds is abandoned, as is a request still in flight when the probe stops. Abandonment releases the slot and the delegate; delivered bytes are kept for retry.
 The event log keeps the latest 128 events. Disabled interactions cannot measure unobserved physical attempts.
 Optional acceleration is disabled. The report records the configuration used.
 

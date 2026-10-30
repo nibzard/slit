@@ -8,13 +8,28 @@ private final class ProbeModel: ObservableObject {
     @Published var files: [URL] = []
     @Published var canCapture = false
     @Published var canRetry = false
-    lazy var probe = CapabilityProbe { [weak self] update in
-        Task { @MainActor [weak self] in
-            self?.text = update.text
-            self?.files = update.files
-            self?.canCapture = update.canCapture
-            self?.canRetry = update.canRetry
+    let probe: CapabilityProbe
+    private var applyUpdates: Task<Void, Never>?
+
+    init() {
+        // The publish closure is Sendable, so it must not capture this MainActor
+        // model. It captures only the Sendable stream continuation; the consumer
+        // task applies each update on the main actor below.
+        let (updates, continuation) = AsyncStream<CapabilityProbe.Update>.makeStream()
+        probe = CapabilityProbe { update in continuation.yield(update) }
+        applyUpdates = Task { @MainActor [weak self] in
+            for await update in updates {
+                guard let self else { return }
+                self.text = update.text
+                self.files = update.files
+                self.canCapture = update.canCapture
+                self.canRetry = update.canRetry
+            }
         }
+    }
+
+    deinit {
+        applyUpdates?.cancel()
     }
 }
 
@@ -54,6 +69,16 @@ private struct ProbeHardwareInput: UIViewRepresentable {
     let enabled: Bool
     let receive: (String, String) -> Void
 
+    /// Holds the hardware-capture interaction directly. The view's interaction
+    /// order carries no meaning and must not be used for lookup.
+    final class Coordinator {
+        var interaction: AVCaptureEventInteraction?
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
     func makeUIView(context: Context) -> UIView {
         let view = UIView()
         let interaction = AVCaptureEventInteraction(primary: { event in
@@ -62,12 +87,13 @@ private struct ProbeHardwareInput: UIViewRepresentable {
             receive("secondary", phaseName(event.phase))
         })
         interaction.isEnabled = enabled
+        context.coordinator.interaction = interaction
         view.addInteraction(interaction)
         return view
     }
 
     func updateUIView(_ view: UIView, context: Context) {
-        (view.interactions.first as? AVCaptureEventInteraction)?.isEnabled = enabled
+        context.coordinator.interaction?.isEnabled = enabled
     }
 
     private func phaseName(_ phase: AVCaptureEventPhase) -> String {

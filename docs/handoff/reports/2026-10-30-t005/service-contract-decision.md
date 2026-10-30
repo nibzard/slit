@@ -59,3 +59,15 @@ T007 implements metadata validation, the versioned codec, reservation durability
 T008 implements storage operations and failure injection. T009 integrates admission and camera callbacks.
 T006 freezes physical format, dimensions, decoder, capacity, and storage reserve from device evidence.
 None of those outcomes follows from this source contract alone.
+
+## Reconciliation note, October 30, 2026
+
+Specification 0002 section 7 now states the order-reservation rule normatively.
+The persisted file is `Application Support/Slit/order-high-watermark.json`, listed in the directory layout.
+Reserved values are an explicit third category beside committed and recoverable values.
+Recovery resumes above the largest committed, recoverable, or reserved value.
+Reuse of a value from any category fails explicitly.
+The same section now carries a normative `capture.json` field appendix.
+The appendix fixes exact keys, types, units, nullability, closed values, the snapshotted input source at `requested.input`, and the unknown-key policy.
+The contracts above need no source change; T007 must implement the flattening and validation the appendix defines.
+These rules remain unverified until the T007 crash-boundary tests and the T006 device freeze complete.

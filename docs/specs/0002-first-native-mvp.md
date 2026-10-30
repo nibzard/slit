@@ -92,10 +92,17 @@ Start with frame `#20251F`, primary text `#EFEFEB`, secondary text `#A0A996`, an
 Use the system font in the native application.
 Check text contrast and increased-contrast settings on the phone before acceptance.
 
-In portrait, target a shutter diameter of 104 points and a trailing inset of 24 points.
-Allow the diameter to adapt between 88 and 116 points when layout space requires it.
-Keep its center fixed across focus, saving, busy, and exposure states.
+In portrait, keep the shutter center fixed while the safe area stays unchanged.
+The trailing and bottom clearances start at 24 points each.
+A larger safe-area inset replaces the 24-point clearance on that edge; nothing else reduces it.
+Place the center so that the largest supported diameter still keeps both clearances.
+Target a shutter diameter of 104 points.
+Adapt the diameter before moving the center: when the trailing or bottom safe-area inset, the reserved status strip, or an adjacent touch area leaves too little room for 104 points, reduce the diameter in whole points, never below 88 or above 116 points.
+Move the center only when an 88-point diameter still cannot fit.
+Then move it by the smallest amount that restores the fit, and record the change.
+Keep the center fixed across focus, saving, busy, exposure, and diameter changes.
 The review return control must use that same center and touch area.
+Apply the same precedence between diameter and center in landscape.
 These are initial layout values; record any change made after testing reach on the phone.
 
 Other controls need at least a 44-by-44-point touch area. Review access uses 52 by 52 points.
@@ -296,6 +303,10 @@ Accept a request only when all of these are true:
 Use output readiness as a signal, not a guarantee of immediate exposure.
 Apple describes it as readiness to respond in a timely manner. [Capture readiness][A4]
 
+The interim acceptable readiness level is: the capture session is running, the rear device input is attached, the configured photo output is attached, and no session interruption remains unrecovered.
+Treat this interim level as a minimum for admission, not as a definition of readiness.
+The T006 capability freeze sets the final level from device evidence and records it with the frozen configuration.
+
 Start with two capture slots. Lower this limit if device evidence requires it.
 A slot covers request, delivery, and saving. Release it after commit or after a failure releases its data.
 A failed save with retained bytes still occupies a slot.
@@ -353,6 +364,7 @@ Application Support/Slit/
     capture.json.partial
   recovery/<capture-id>/
   library-index.json
+  order-high-watermark.json
 Caches/Slit/
   previews/<capture-id>/thumbnail.jpg
   previews/<capture-id>/review.jpg
@@ -362,6 +374,9 @@ Caches/Slit/
 A capture identifier is a newly generated universally unique identifier (UUID).
 Never derive identity only from a timestamp or overwrite an existing bundle.
 The index is a rebuildable convenience. It is not the source of truth for originals.
+`order-high-watermark.json` persists the highest reserved library-order value.
+The store replaces it atomically before it returns any newly reserved values.
+It is not rebuildable from committed bundles alone, because reserved values can outlive them.
 Cache files can be deleted and regenerated.
 
 ### Metadata schema version 1
@@ -389,11 +404,73 @@ Whitelist fields and convert them to stable primitive values.
 The original retains its returned bytes and embedded metadata unchanged.
 A future recipe can reference the original without requiring a recipe field in version 1.
 
+#### Field appendix for version 1
+
+The table above names each field. This appendix fixes the exact keys, types, units, nullability, and closed values.
+It is normative for every file that declares `schemaVersion` 1.
+The shared contracts in `Packages/SlitCore` group identity and environment for Swift callers.
+The stored form flattens both groups into the top-level keys listed below.
+`requested`, `delivered`, `original`, and `recovery` remain objects.
+An unavailable group writes `null` for the object key, or `null` for every key of a flattened group.
+
+| Key | Type, unit, or closed values | Null |
+| --- | --- | --- |
+| `schemaVersion` | Integer; the value 1 | Never |
+| `captureId` | UUID string; matches the bundle directory name | Never |
+| `sessionId` | UUID string | Never |
+| `requestOrdinal` | Integer; counts accepted requests within one session | Never |
+| `libraryOrder` | Integer; durable across sessions; gaps allowed | Never |
+| `requestedAtUTC` | UTC timestamp string | When unknown |
+| `committedAtUTC` | UTC timestamp string | Until commit, or when unknown |
+| `appBuild`, `osBuild`, `deviceModel` | Strings; flattened environment keys | When the environment group is unavailable |
+| `cameraDeviceType` | String; actual selected device type | When the environment group is unavailable |
+| `cameraPosition` | String; the rear position | When the environment group is unavailable |
+| `zoomFactor` | Number; device zoom factor; 1.0 | When the environment group is unavailable |
+| `requested` | Object; snapshotted request settings | When recovery lost the snapshot |
+| `requested.rawPixelFormat` | Integer; packed raw pixel format code | Never |
+| `requested.maximumDimensions` | Object; `width` and `height` integers in pixels | Never |
+| `requested.qualityPriority` | One of `speed` | Never |
+| `requested.exposureCompensationEV` | Number; exposure values | Never |
+| `requested.orientation` | One of `portrait`, `landscapeLeft`, `landscapeRight` | Never |
+| `requested.focusState` | One of `continuous`, `acquiring`, `locking`, `verifiedLocked` | Never |
+| `requested.input` | One of `onscreen`, `hardwarePrimary`, `hardwareSecondary` | Never |
+| `delivered` | Object; values reported by the platform | Never |
+| `delivered.dimensions` | Object; `width` and `height` integers in pixels | When unavailable |
+| `delivered.orientationEXIF` | Integer; EXIF orientation value | When unavailable |
+| `delivered.exposureTimeSeconds` | Number; seconds | When unavailable |
+| `delivered.sensitivityISO` | Number; ISO sensitivity | When unavailable |
+| `delivered.apertureFNumber` | Number; f-number | When unavailable |
+| `delivered.focalLengthMillimeters` | Number; millimeters | When unavailable |
+| `timing` | Array of objects; each has `name` (string) and `milliseconds` (number) | Never; an empty array is valid |
+| `original.fileName` | String; final file name inside the bundle | Never |
+| `original.byteCount` | Integer; bytes | Never |
+| `original.validation` | One of `readableContainer` | Never |
+| `recovery.wasRecovered` | Boolean | Never |
+| `recovery.unavailableFields` | Array of strings; key names from this appendix | Never; an empty array is valid |
+
+EXIF means Exchangeable Image File format.
+The snapshotted input source lives at `requested.input`.
+It records the onscreen or hardware origin of the request, not the handler that processed it.
+The closed value lists in this appendix are complete for version 1.
+A value outside a list fails validation explicitly.
+
+Unknown keys are not part of version 1.
+A decoder accepts a file that contains them and ignores their values.
+The app does not invent unknown keys for its own writes.
+Recovery that completes a staging file keeps that file's unknown keys unchanged.
+An unknown key never changes how a known key is read.
+
 Order items by stable request order within each session.
 Across sessions, preserve a durable library order and rebuild the index from that stored value.
 Store that durable library order in `capture.json` before commit; gaps are allowed.
 Allocate order at request admission so late callbacks cannot reorder captures.
-On recovery, reserve new values above the largest committed or recoverable value.
+Before enabling capture, reserve a block of values by atomically replacing `order-high-watermark.json`.
+Consume reserved values in memory so no disk allocation runs on the shutter path.
+Refill the block in the background before exhaustion.
+Reject admission briefly when no safe reserved value remains.
+Reserved values form an explicit third category beside committed and recoverable values.
+Never reuse a value from any of the three categories.
+On recovery, reserve new values above the largest committed, recoverable, or reserved value.
 Wall-clock changes must not reverse the library order.
 
 ### Commit procedure
@@ -549,7 +626,7 @@ Simulator and browser results do not satisfy camera or performance checks.
 | --- | --- | --- |
 | M01 | First launch, grant, deny, and later permission change | Correct state and library access; no setup form or hidden capture |
 | M02 | Capability configuration | Physical rear main, 1×, Bayer raw, dimensions and supported focus operations recorded |
-| M03 | Grip in portrait and both landscapes | Full framing; reachable controls; matching shutter/return position; no overlap |
+| M03 | Grip in portrait and both landscapes | Full framing; reachable controls; matching shutter/return position; no overlap. Overlaid touch-area frames in all three orientations show every control at or above its minimum size, inside the display, and clear of the safe areas, the image rectangle, and every other control |
 | M04 | Onscreen and hardware shutter | One accepted action has one identifier and at most one original; hold and cancel do not repeat |
 | M05 | Busy input and queue pressure | No delayed replay; two-slot maximum includes saving and retained failed writes |
 | M06 | Tap focus | Correct rotated image coordinates; margins ignored; continuous autofocus resumes |
@@ -562,12 +639,12 @@ Simulator and browser results do not satisfy camera or performance checks.
 | M13 | Fault injection during each write and rename | No false saved state or overwrite; retry preserves identity; discard requires confirmation |
 | M14 | Incomplete staging and corrupt cache | Recovery is repeatable; valid originals remain; unreadable files are isolated |
 | M15 | Delayed and reordered callbacks | Request order controls library and thumbnail; late callbacks remain handled |
-| M16 | Review and detail | Swipes navigate at fit scale; zoom pans without changing items; detail resolution is honest |
+| M16 | Review and detail | Swipes navigate at fit scale; zoom pans without changing items; detail resolution is honest. At maximum magnification the inspected image reports the pixel dimensions of the developed review image, never the dimensions of a smaller embedded preview |
 | M17 | Return from review | Same thumb position; no pass-through capture; readiness rechecked; focus and compensation preserved when valid |
 | M18 | Sharing and cancellation | Exported DNG bytes match; cancellation leaves library and selection unchanged |
 | M19 | Background, screen lock, and runtime recovery | No replay or hidden capture; complete delivered data recovers where available |
-| M20 | Low storage, memory, and thermal pressure | Bounded queues; optional work reduced first; no deletion of committed originals |
-| M21 | Accessibility | VoiceOver workflow, center lock action, larger text, contrast, and motion preferences work |
+| M20 | Low storage, memory, and thermal pressure | Bounded queues; optional work reduced first; no deletion of committed originals. Under induced pressure, diagnostics record preview work pausing or cancelling before admission capacity falls, and the count of committed bundles never decreases |
+| M21 | Accessibility | VoiceOver workflow, center lock action, larger text, contrast, and motion preferences work. A VoiceOver user completes capture, focus lock through the center action, review, return, and share without sighted assistance. At the largest text size every labeled control stays on screen and reachable |
 | M22 | Sustained capture and startup | Recorded performance gates pass; full counts, rejections, failures, and thermal context included |
 | M23 | Grid and preview workload comparison | No framing change or capture dependency; optional work does not break the performance gates |
 | M24 | Offline operation and diagnostics | Capture/review/share preparation work offline; no automatic network traffic; diagnostics stay bounded and exclude image data |

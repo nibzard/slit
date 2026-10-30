@@ -281,8 +281,8 @@ Store a logical capture bundle with:
 |---|---|
 | `original.dng` | Original raw bytes returned by capture |
 | `capture.json` | Schema version, identifier, request order, time, orientation, device, dimensions, and delivered capture metadata |
-| `preview.jpg` | Regenerable review image; creation is not required for the original commit |
-| Recipe reference | Reserved for the second milestone's versioned rendering choices |
+| `preview.jpg` | Superseded for the first native build by [specification 0002, section 7](0002-first-native-mvp.md#7-storage-and-data-contract); previews are regenerable cache files outside the committed bundle |
+| Recipe reference | Superseded for the first native build by [specification 0002, section 7](0002-first-native-mvp.md#7-storage-and-data-contract); version 1 metadata stores no recipe field |
 
 Use unique capture identifiers and never overwrite an earlier original.
 Record requested settings separately from metadata reported by the delivered photograph.

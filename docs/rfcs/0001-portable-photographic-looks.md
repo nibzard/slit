@@ -275,6 +275,8 @@ Provide these controls:
 
 The contrast control must resolve into an explicit curve stored in the recipe. The renderer must not depend on a hidden application slider.
 
+These controls belong to this RFC's import product. The camera milestone in [specification 0001](../specs/0001-street-camera-mvp.md) section 10 exposes none of them.
+
 Automatic exposure, noise-aware grain, and subject masks remain future extensions. They require their own versioned analysis and resolved parameters.
 
 ## 10 Application workflow

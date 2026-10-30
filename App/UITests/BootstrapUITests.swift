@@ -1,13 +1,23 @@
+// ABOUTME: Shell UI tests: honest camera states without a real camera, and grid preference persistence.
+// ABOUTME: Simulator runs cannot prove capture; they verify states, controls, and stability only.
+
 import XCTest
 
 final class BootstrapUITests: XCTestCase {
-    func testShellNeverOffersAnUnimplementedCapture() {
+    func testShellShowsHonestStateWithoutACamera() {
         let app = XCUIApplication()
+        let permissionDialog = addUIInterruptionMonitor(withDescription: "camera permission") { interaction in
+            let allow = interaction.buttons.matching(NSPredicate(format: "label LIKE '*Allow*'")).firstMatch
+            if allow.exists { allow.tap(); return true }
+            return false
+        }
         app.launch()
-        XCTAssertTrue(app.buttons["shutterButton"].waitForExistence(timeout: 5))
-        XCTAssertFalse(app.buttons["shutterButton"].isEnabled)
+        app.buttons["shutterButton"].tap() // Drives the interruption monitor on the permission dialog.
         let placeholder = app.descendants(matching: .any)["cameraPlaceholder"]
-        XCTAssertTrue(placeholder.waitForExistence(timeout: 5))
+        XCTAssertTrue(placeholder.waitForExistence(timeout: 10), "A camera-less host must show an honest placeholder, never a fake preview")
+        XCTAssertTrue(app.buttons["shutterButton"].exists)
+        XCTAssertFalse(app.buttons["shutterButton"].isEnabled, "The shutter must stay disabled while no camera is ready")
+        removeUIInterruptionMonitor(permissionDialog)
     }
 
     func testGridPreferenceSurvivesRelaunch() {

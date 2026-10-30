@@ -69,6 +69,18 @@ The product owner accepted the [dimension freeze at 4032x3024](reports/2026-10-3
 closing the WP-01 configuration decision. Remaining observations (repeat hardware timings, secondary
 volume events, focus-lock execution with sharpness) move to WP-02/WP-05/WP-08 measurement work.
 
+## WP-02 camera implementation (October 30-31)
+
+The production camera owner, preview bridge, permission and lifecycle flow, admission-gated
+one-shot capture, and hardware capture events are implemented in `App/Sources/Camera` and the
+Grip shell. Core and shell UI tests pass on the simulator; the capture pipeline and honest
+not-saved feedback were verified on the physical iPhone 16 Plus while its camera subsystem
+was healthy. Device verification is incomplete: the phone's camera subsystem wedged
+system-wide reproducibly during testing. The investigation, ranked root causes, applied
+mitigations, and the device return protocol are recorded in the
+[fault report](reports/2026-10-30-t009/camera-subsystem-fault.md). M01, M04, M05, and M19
+device evidence remains open until the return protocol runs.
+
 ## T005 source preparation
 
 A debug-only capability probe and shared service contracts are now prepared.
